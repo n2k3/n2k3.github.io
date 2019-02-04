@@ -1,0 +1,117 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -238.899,
+        4.74,
+        -16.9992752
+      ],
+      "min": [
+        -239.3493,
+        2.84,
+        -17.0052757
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "01_016_001.bin",
+      "byteLength": 132
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 36,
+      "byteLength": 96,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "o1_glas",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.627451,
+          0.627451,
+          0.627451,
+          0.25
+        ],
+        "metallicFactor": 0.0
+      },
+      "alphaMode": "BLEND"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        240.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[8795806]22_glazen wand 6mm"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Cell"
+    }
+  ]
+}

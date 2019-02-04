@@ -178,7 +178,7 @@ THREE.ShaderChunk[ 'pathtracing_skymodel_defines' ] = `
 #define MIE_ZENITH_LENGTH 1250.0
 #define UP_VECTOR vec3(0.0, 1.0, 0.0)
 
-#define SUN_INTENSITY 20.0 //800.0 if Uncharted2ToneMap is used
+#define SUN_INTENSITY 15.0 //800.0 if Uncharted2ToneMap is used
 #define SUN_ANGULAR_DIAMETER_COS 0.99983194915 // 66 arc seconds -> degrees, and the cosine of that
 #define CUTOFF_ANGLE 1.66 // original value (PI / 1.9) 
 

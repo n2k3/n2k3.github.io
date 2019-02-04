@@ -1,0 +1,116 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5123,
+      "count": 1770,
+      "type": "SCALAR",
+      "max": [
+        317.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 318,
+      "type": "VEC3",
+      "max": [
+        111.21946,
+        5.85199976,
+        36.031
+      ],
+      "min": [
+        110.7,
+        5.76699972,
+        35.46054
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "03_007_002.bin",
+      "byteLength": 7356
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3540,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3540,
+      "byteLength": 3816,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "h7_zink",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.470588237,
+          0.470588237,
+          0.470588237,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -105.0,
+        0.0,
+        -45.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[8271291]52_Zinken bakgoot B44 met eindstuk"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Cell"
+    }
+  ]
+}

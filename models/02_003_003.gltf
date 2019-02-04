@@ -1,0 +1,740 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 324,
+      "type": "SCALAR",
+      "max": [
+        55.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 56,
+      "type": "VEC3",
+      "max": [
+        -39.437,
+        5.68799973,
+        59.898
+      ],
+      "min": [
+        -44.8630028,
+        5.68,
+        52.09995
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 276,
+      "type": "SCALAR",
+      "max": [
+        47.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 48,
+      "type": "VEC3",
+      "max": [
+        -39.425,
+        5.735,
+        59.91
+      ],
+      "min": [
+        -44.875,
+        5.68,
+        52.08795
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5121,
+      "count": 144,
+      "type": "SCALAR",
+      "max": [
+        27.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 28,
+      "type": "VEC3",
+      "max": [
+        -42.6000175,
+        5.735,
+        57.062
+      ],
+      "min": [
+        -44.875,
+        5.68,
+        52.08795
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5121,
+      "count": 63,
+      "type": "SCALAR",
+      "max": [
+        21.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 22,
+      "type": "VEC3",
+      "max": [
+        -42.50002,
+        9.245785,
+        57.162
+      ],
+      "min": [
+        -42.6000175,
+        5.68,
+        52.08795
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5121,
+      "count": 57,
+      "type": "SCALAR",
+      "max": [
+        20.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 21,
+      "type": "VEC3",
+      "max": [
+        -42.50002,
+        9.245785,
+        57.162
+      ],
+      "min": [
+        -42.6000175,
+        5.68,
+        52.08795
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5123,
+      "count": 2052,
+      "type": "SCALAR",
+      "max": [
+        300.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5126,
+      "count": 301,
+      "type": "VEC3",
+      "max": [
+        0.415,
+        1.075,
+        0.142
+      ],
+      "min": [
+        0.24,
+        1.025,
+        -0.0180000011
+      ]
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5121,
+      "count": 84,
+      "type": "SCALAR",
+      "max": [
+        15.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3",
+      "max": [
+        0.452,
+        2.343,
+        0.082
+      ],
+      "min": [
+        -0.452,
+        0.028,
+        0.042
+      ]
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5123,
+      "count": 37404,
+      "type": "SCALAR",
+      "max": [
+        11868.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 15,
+      "componentType": 5126,
+      "count": 11869,
+      "type": "VEC3",
+      "max": [
+        0.48,
+        2.374,
+        0.065
+      ],
+      "min": [
+        -0.48,
+        -4.03399446E-24,
+        -0.065
+      ]
+    },
+    {
+      "bufferView": 16,
+      "componentType": 5121,
+      "count": 18,
+      "type": "SCALAR",
+      "max": [
+        9.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 17,
+      "componentType": 5126,
+      "count": 10,
+      "type": "VEC3",
+      "max": [
+        -42.6000175,
+        8.487083,
+        57.162
+      ],
+      "min": [
+        -44.920002,
+        5.68,
+        57.062
+      ]
+    },
+    {
+      "bufferView": 18,
+      "componentType": 5121,
+      "count": 30,
+      "type": "SCALAR",
+      "max": [
+        9.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 19,
+      "componentType": 5126,
+      "count": 10,
+      "type": "VEC3",
+      "max": [
+        -42.6000175,
+        8.487083,
+        57.162
+      ],
+      "min": [
+        -44.920002,
+        5.68,
+        57.062
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "02_003_003.bin",
+      "byteLength": 228488
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 324,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 324,
+      "byteLength": 672,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 996,
+      "byteLength": 276,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1272,
+      "byteLength": 576,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1848,
+      "byteLength": 144,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1992,
+      "byteLength": 336,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2328,
+      "byteLength": 64,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2392,
+      "byteLength": 264,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2656,
+      "byteLength": 60,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2716,
+      "byteLength": 252,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2968,
+      "byteLength": 4104,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 7072,
+      "byteLength": 3612,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10684,
+      "byteLength": 84,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10768,
+      "byteLength": 192,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 10960,
+      "byteLength": 74808,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 85768,
+      "byteLength": 142428,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 228196,
+      "byteLength": 20,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 228216,
+      "byteLength": 120,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 228336,
+      "byteLength": 32,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 228368,
+      "byteLength": 120,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "i3_vloerafwerking_parketvloer",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8862745,
+          0.8,
+          0.6901961,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "i3_loofhout (hardhout)",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.945098042,
+          0.933333337,
+          0.8862745,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "f7_gipsplaten",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.956862748,
+          0.956862748,
+          0.956862748,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "Walls material#7F7F7FFF",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.498039216,
+          0.498039216,
+          0.498039216,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "Doors material#7F7F7FFF",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.498039216,
+          0.498039216,
+          0.498039216,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "n6_kunststof_wit",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h2_staal",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.847058833,
+          0.847058833,
+          0.8,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 3
+          },
+          "indices": 2,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 5
+          },
+          "indices": 4,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 7
+          },
+          "indices": 6,
+          "material": 2
+        },
+        {
+          "attributes": {
+            "POSITION": 9
+          },
+          "indices": 8,
+          "material": 3
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 11
+          },
+          "indices": 10,
+          "material": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 13
+          },
+          "indices": 12,
+          "material": 5
+        },
+        {
+          "attributes": {
+            "POSITION": 15
+          },
+          "indices": 14,
+          "material": 6
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 17
+          },
+          "indices": 16,
+          "material": 2
+        },
+        {
+          "attributes": {
+            "POSITION": 19
+          },
+          "indices": 18,
+          "material": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        45.0,
+        0.0,
+        -60.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[8688629]43_Vloerafwerking"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        45.0,
+        0.0,
+        -60.0,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "[8688653]43_Vloerplint 12x55mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        45.0,
+        0.0,
+        -60.0,
+        1.0
+      ],
+      "mesh": 2,
+      "name": "[8688667]43_Vloerplint 12x55mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        45.0,
+        0.0,
+        -60.0,
+        1.0
+      ],
+      "mesh": 3,
+      "name": "[8688680]22_MS 100mm GF 100/1.75.1.A"
+    },
+    {
+      "matrix": [
+        2.78367574E-15,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        2.78367574E-15,
+        0.0,
+        2.44998121,
+        5.68,
+        -5.31254959,
+        1.0
+      ],
+      "mesh": 4,
+      "name": "[8688681]merk i.sp"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        45.0,
+        0.0,
+        -60.0,
+        1.0
+      ],
+      "mesh": 5,
+      "name": "[8688696]22_MS 100mm GF 100/1.75.1.A"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "name": "Cell"
+    }
+  ]
+}

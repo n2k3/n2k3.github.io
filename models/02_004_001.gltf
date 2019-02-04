@@ -1,0 +1,287 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 72,
+      "type": "SCALAR",
+      "max": [
+        15.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3",
+      "max": [
+        0.166574791,
+        0.408220023,
+        0.101
+      ],
+      "min": [
+        0.08657479,
+        0.397295415,
+        0.1
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5123,
+      "count": 1956,
+      "type": "SCALAR",
+      "max": [
+        343.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 344,
+      "type": "VEC3",
+      "max": [
+        0.1663748,
+        0.406295449,
+        0.101
+      ],
+      "min": [
+        0.08700556,
+        0.399187744,
+        0.1
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 3996,
+      "type": "SCALAR",
+      "max": [
+        899.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 900,
+      "type": "VEC3",
+      "max": [
+        0.185,
+        0.57,
+        0.1
+      ],
+      "min": [
+        -0.185,
+        0.12,
+        0.022
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5123,
+      "count": 2736,
+      "type": "SCALAR",
+      "max": [
+        537.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 538,
+      "type": "VEC3",
+      "max": [
+        0.117030866,
+        0.456858,
+        0.022
+      ],
+      "min": [
+        -0.117030866,
+        0.203141972,
+        -1.53173661E-26
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "02_004_001.bin",
+      "byteLength": 39024
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 72,
+      "byteLength": 192,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 264,
+      "byteLength": 3912,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 4176,
+      "byteLength": 4128,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8304,
+      "byteLength": 7992,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 16296,
+      "byteLength": 10800,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 27096,
+      "byteLength": 5472,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 32568,
+      "byteLength": 6456,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "n6_kunststof_rood",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "n6_kunststof_zwart",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "n6_kunststof_wit",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h2_staal_gegalvaniseerd",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.470588237,
+          0.470588237,
+          0.470588237,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 3
+          },
+          "indices": 2,
+          "material": 1
+        },
+        {
+          "attributes": {
+            "POSITION": 5
+          },
+          "indices": 4,
+          "material": 2
+        },
+        {
+          "attributes": {
+            "POSITION": 7
+          },
+          "indices": 6,
+          "material": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        -3.55271368E-15,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        -3.55271368E-15,
+        0.0,
+        5.575,
+        5.68,
+        -1.27295041,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[7315643]51_elektrische verwarmer_Stiebel_Eltron_CNS_50S"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ],
+      "name": "Cell"
+    }
+  ]
+}

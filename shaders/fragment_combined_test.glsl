@@ -37,7 +37,7 @@ struct Ray { vec3 origin; vec3 direction; };
 struct Quad { vec3 v0; vec3 v1; vec3 v2; vec3 v3; vec3 emission; vec3 color; int type; };
 struct Sphere { float radius; vec3 position; vec3 emission; vec3 color; int type; };
 struct Box { vec3 minCorner; vec3 maxCorner; vec3 emission; vec3 color; int type; };
-struct Intersection { vec3 normal; vec3 emission; vec3 color; vec2 uv; int type; int albedoTextureID; }; // HACK remove albedoTextureID
+struct Intersection { vec3 normal; vec3 emission; vec3 color; vec2 uv; int type; int albedoTextureID; float opacity;}; // HACK remove albedoTextureID
 
 Quad quads[N_QUADS];
 
@@ -543,6 +543,7 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 		intersec.normal = normalize(triangleW * vec3(vd2.yzw) + triangleU * vec3(vd3.xyz) + triangleV * vec3(vd3.w, vd4.xy));
 		intersec.emission = vec3(1, 0, 1); // use this if intersec.type will be LIGHT
 		intersec.color = vd6.yzw;
+		intersec.opacity = vd7.y;
 		intersec.uv = triangleW * vec2(vd4.zw) + triangleU * vec2(vd5.xy) + triangleV * vec2(vd5.zw);
 		intersec.type = int(vd6.x);
 		intersec.albedoTextureID = int(vd7.x);
@@ -599,6 +600,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 
 		float t = SceneIntersect(r, intersec, false); // HACK remove false (checkOcean)
 
+/*
 		// ray hits sky first
 		if (t == INFINITY && bounces == 0 ) // HACK remove bounces
 		{
@@ -607,13 +609,15 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			accumCol = initialSkyColor; // HACK remove
 			break;	
 		}
-		
+		*/
+
 		// if ray bounced off of water and hits sky
 		if ( t == INFINITY && previousIntersecType == REFR )
 		{
 			if (bounceIsSpecular) // prevents sun 'fireflies' on diffuse surfaces
-				accumCol = mask * Get_Sky_Color(r, sunDirection);
-			
+//				accumCol = mask * Get_Sky_Color(r, sunDirection);
+				accumCol = mask * Get_Sky_Color(r, sunDirection) * 1.0 / SUN_INTENSITY;
+
 			//if (uCameraUnderWater > 0.0) // uncomment 'if' for clouds reflection in water, but it's a
 //				skyHit = true;       // straight mirror-reflection, which is not physically possible
 			 
@@ -623,7 +627,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			break;	
 		}
 		
-		
+		/*
 		// if ray bounced off of mirror box and hits sky
 		if (t == INFINITY && previousIntersecType == SPEC)
 		{
@@ -643,6 +647,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			
 			break;	
 		}
+		*/
 		
 		// if ray bounced off of diffuse material (short box or walls/floor) and hits sky
 		if (t == INFINITY && previousIntersecType == DIFF)
@@ -657,6 +662,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			break;
 		}
 
+/*
 		// HACK might not need this (gltf Loading)
 		// if we reached something bright, don't spawn any more rays
 		if (intersec.type == LIGHT)
@@ -668,6 +674,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 
 			break;
 		}
+		*/
 
 
 		// useful data
@@ -702,7 +709,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			}
 
 			mask *= intersec.color;
-			//bounceIsSpecular = false; // HACK enable this, disable below
+//			bounceIsSpecular = false; // HACK enable this, disable below
 
 			/* HACK enable this
 			// Russian Roulette
@@ -735,7 +742,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 				continue;
             }
         }
-
+/*
         if (intersec.type == SPEC)  // Ideal SPECULAR reflection
         {
 			//checkOcean = true;
@@ -748,6 +755,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			
 			continue;
         }
+        */
 
         if (intersec.type == REFR)  // Ideal dielectric REFRACTION
 		{
@@ -758,8 +766,8 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			nt = 1.5; // IOR of common Glass
 			Re = calcFresnelReflectance(n, nl, r.direction, nc, nt, tdir);
 
-			//if (diffuseCount < 2)
-				//bounceIsSpecular = true; // HACK enable this
+			if (diffuseCount < 2)
+				bounceIsSpecular = true; // HACK enable this
 
 			if (rand(seed) < Re) // reflect ray from surface
 			{
@@ -769,7 +777,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			}
 			else // transmit ray through surface
 			{
-				mask *= intersec.color;
+				mask *= intersec.color * (1.0 - intersec.opacity);
 				r = Ray(x, tdir);
 				r.origin += r.direction * epsIntersect;
 				continue;
@@ -777,6 +785,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 
 		} // end if (intersec.type == REFR)
 
+/*
 		// HACK disable wood
 		if (intersec.type == WOOD)  // Diffuse object underneath with thin layer of Water on top
 		{
@@ -874,6 +883,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			}
 
 		} //end if (intersec.type == COAT)
+		*/
 
 
 	} // end for (int bounces = 0; bounces < 5; bounces++)

@@ -1,0 +1,998 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5123,
+      "count": 4710,
+      "type": "SCALAR",
+      "max": [
+        988.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 989,
+      "type": "VEC3",
+      "max": [
+        0.45025,
+        1.69197991E-17,
+        1.29087823E-22
+      ],
+      "min": [
+        -0.45025,
+        -0.146,
+        -0.4203
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 552,
+      "type": "SCALAR",
+      "max": [
+        95.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 96,
+      "type": "VEC3",
+      "max": [
+        0.2425,
+        -0.0005456652,
+        -0.04248517
+      ],
+      "min": [
+        -0.2425,
+        -0.00399450259,
+        -0.07752078
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5123,
+      "count": 6036,
+      "type": "SCALAR",
+      "max": [
+        1336.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 1337,
+      "type": "VEC3",
+      "max": [
+        0.08535909,
+        0.287414134,
+        0.0255
+      ],
+      "min": [
+        -0.0255,
+        0.0,
+        -0.158336937
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5123,
+      "count": 6036,
+      "type": "SCALAR",
+      "max": [
+        1336.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 1337,
+      "type": "VEC3",
+      "max": [
+        0.08535909,
+        0.287414134,
+        0.0255
+      ],
+      "min": [
+        -0.0255,
+        0.0,
+        -0.158336937
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5121,
+      "count": 72,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        0.450000018,
+        0.0,
+        0.0
+      ],
+      "min": [
+        -0.450000018,
+        -0.7,
+        -0.004
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5123,
+      "count": 1758,
+      "type": "SCALAR",
+      "max": [
+        298.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5126,
+      "count": 299,
+      "type": "VEC3",
+      "max": [
+        0.0588,
+        0.0180000011,
+        0.038
+      ],
+      "min": [
+        -0.0602,
+        -0.0665,
+        0.0
+      ]
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5123,
+      "count": 14700,
+      "type": "SCALAR",
+      "max": [
+        2873.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 2874,
+      "type": "VEC3",
+      "max": [
+        0.25,
+        0.965999961,
+        0.085
+      ],
+      "min": [
+        -0.25,
+        -4.82214269E-16,
+        -0.005688106
+      ]
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5123,
+      "count": 20532,
+      "type": "SCALAR",
+      "max": [
+        4626.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 15,
+      "componentType": 5126,
+      "count": 4627,
+      "type": "VEC3",
+      "max": [
+        0.152026653,
+        0.0358884744,
+        0.027
+      ],
+      "min": [
+        -0.152026653,
+        -0.03417206,
+        -0.07953807
+      ]
+    },
+    {
+      "bufferView": 16,
+      "componentType": 5123,
+      "count": 57006,
+      "type": "SCALAR",
+      "max": [
+        10488.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 17,
+      "componentType": 5126,
+      "count": 10489,
+      "type": "VEC3",
+      "max": [
+        0.287904352,
+        0.149373174,
+        0.578
+      ],
+      "min": [
+        -0.0470752046,
+        -0.0180000011,
+        -0.399533719
+      ]
+    },
+    {
+      "bufferView": 18,
+      "componentType": 5121,
+      "count": 657,
+      "type": "SCALAR",
+      "max": [
+        138.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 19,
+      "componentType": 5126,
+      "count": 139,
+      "type": "VEC3",
+      "max": [
+        0.18389453,
+        0.0417186469,
+        -7.72071548E-15
+      ],
+      "min": [
+        -0.18389453,
+        -1.86963783E-15,
+        -0.435412377
+      ]
+    },
+    {
+      "bufferView": 20,
+      "componentType": 5121,
+      "count": 552,
+      "type": "SCALAR",
+      "max": [
+        105.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 21,
+      "componentType": 5126,
+      "count": 106,
+      "type": "VEC3",
+      "max": [
+        0.051,
+        0.111077294,
+        -0.01675
+      ],
+      "min": [
+        -0.051,
+        0.03,
+        -0.231
+      ]
+    },
+    {
+      "bufferView": 22,
+      "componentType": 5123,
+      "count": 16620,
+      "type": "SCALAR",
+      "max": [
+        3690.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 23,
+      "componentType": 5126,
+      "count": 3691,
+      "type": "VEC3",
+      "max": [
+        0.180209756,
+        0.5397274,
+        -8.45989932E-16
+      ],
+      "min": [
+        -0.180213109,
+        -1.21891636E-10,
+        -0.3367047
+      ]
+    },
+    {
+      "bufferView": 24,
+      "componentType": 5121,
+      "count": 420,
+      "type": "SCALAR",
+      "max": [
+        121.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 25,
+      "componentType": 5126,
+      "count": 122,
+      "type": "VEC3",
+      "max": [
+        0.107,
+        0.015,
+        0.0720000044
+      ],
+      "min": [
+        -0.107,
+        -4.06564253E-15,
+        -0.0720000044
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "01_012_001.bin",
+      "byteLength": 570420
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 9420,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 9420,
+      "byteLength": 11868,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 21288,
+      "byteLength": 552,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 21840,
+      "byteLength": 1152,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 22992,
+      "byteLength": 12072,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 35064,
+      "byteLength": 16044,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 51108,
+      "byteLength": 12072,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 63180,
+      "byteLength": 16044,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 79224,
+      "byteLength": 72,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 79296,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 79392,
+      "byteLength": 3516,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 82908,
+      "byteLength": 3588,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 86496,
+      "byteLength": 29400,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 115896,
+      "byteLength": 34488,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 150384,
+      "byteLength": 41064,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 191448,
+      "byteLength": 55524,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 246972,
+      "byteLength": 114012,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 360984,
+      "byteLength": 125868,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 486852,
+      "byteLength": 660,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 487512,
+      "byteLength": 1668,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 489180,
+      "byteLength": 552,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 489732,
+      "byteLength": 1272,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 491004,
+      "byteLength": 33240,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 524244,
+      "byteLength": 44292,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 568536,
+      "byteLength": 420,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 568956,
+      "byteLength": 1464,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "g3_keramisch_wit",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1.0,
+          1.0,
+          0.9411765,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "Plumbing Fixtures material#7F7F7FFF",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.498039216,
+          0.498039216,
+          0.498039216,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h3_chroom",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.784313738,
+          0.784313738,
+          0.784313738,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "o1_glas_spiegel",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.627451,
+          0.627451,
+          0.627451,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h3_chroom_mat",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.956862748,
+          0.956862748,
+          0.956862748,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 3
+          },
+          "indices": 2,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 5
+          },
+          "indices": 4,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 7
+          },
+          "indices": 6,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 9
+          },
+          "indices": 8,
+          "material": 3
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 11
+          },
+          "indices": 10,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 13
+          },
+          "indices": 12,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 15
+          },
+          "indices": 14,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 17
+          },
+          "indices": 16,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 19
+          },
+          "indices": 18,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 21
+          },
+          "indices": 20,
+          "material": 1
+        },
+        {
+          "attributes": {
+            "POSITION": 23
+          },
+          "indices": 22,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 25
+          },
+          "indices": 24,
+          "material": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.21236354E-13,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.21236354E-13,
+        0.0,
+        2.3967,
+        3.663001,
+        -1.50305688,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[8795520]K087701 STRADA washbasin 910x420mm, 2 taphole, with overflow"
+    },
+    {
+      "matrix": [
+        1.33226763E-15,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.33226763E-15,
+        0.0,
+        2.33678412,
+        3.658001,
+        -1.27805686,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "[8795521]b9933_bim"
+    },
+    {
+      "matrix": [
+        1.33226763E-15,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.33226763E-15,
+        0.0,
+        2.33621955,
+        3.658001,
+        -1.72805691,
+        1.0
+      ],
+      "mesh": 2,
+      "name": "[8795522]b9933_bim"
+    },
+    {
+      "matrix": [
+        1.66588965E-13,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.66588965E-13,
+        0.0,
+        2.3967,
+        4.813001,
+        -1.50305688,
+        1.0
+      ],
+      "mesh": 3,
+      "name": "[8795523]E6544BH CONNECT mirror 900x4mm"
+    },
+    {
+      "matrix": [
+        -1.79162546E-14,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.79162546E-14,
+        0.0,
+        0.645700037,
+        3.48,
+        -1.81773829,
+        1.0
+      ],
+      "mesh": 4,
+      "name": "[8795524]74_N1381AA CONNECT toilet roll holder with no cover"
+    },
+    {
+      "matrix": [
+        1.33226763E-15,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        1.33226763E-15,
+        0.0,
+        2.3117,
+        3.363001,
+        -2.37545061,
+        1.0
+      ],
+      "mesh": 5,
+      "name": "[8795779]Handoek radiator"
+    },
+    {
+      "matrix": [
+        -8.881784E-16,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        -8.881784E-16,
+        0.0,
+        0.2207,
+        3.93967986,
+        -2.45503831,
+        1.0
+      ],
+      "mesh": 6,
+      "name": "[8795782]A6366AA - IDEALTHERM DOUCHETHERM. Z.S-KOPP"
+    },
+    {
+      "matrix": [
+        -7.455376E-15,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        7.455376E-15,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.211699992,
+        4.204352,
+        -2.500043,
+        1.0
+      ],
+      "mesh": 7,
+      "name": "[8795798]74_B1019AA - IDEALRAIN GLIJSTANG 60CM Z.ZEEPSCHAAL"
+    },
+    {
+      "matrix": [
+        5.495604E-15,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        5.495604E-15,
+        0.0,
+        0.7549513,
+        3.27054048,
+        -1.502574,
+        1.0
+      ],
+      "mesh": 8,
+      "name": "[8795812]74_E712701 - CONNECT ZITTING & DEKSEL SOFT CLOSE"
+    },
+    {
+      "matrix": [
+        -8.250615E-32,
+        3.374367E-15,
+        1.0,
+        0.0,
+        1.0,
+        2.44508518E-17,
+        0.0,
+        0.0,
+        -2.44508518E-17,
+        1.0,
+        -3.374367E-15,
+        0.0,
+        0.6457,
+        3.26885438,
+        -1.502574,
+        1.0
+      ],
+      "mesh": 9,
+      "name": "[8795813]E823201 - CONNECT WANDWC WIT"
+    },
+    {
+      "matrix": [
+        2.28945973E-23,
+        -9.363517E-07,
+        1.0,
+        0.0,
+        1.0,
+        2.44508518E-17,
+        0.0,
+        0.0,
+        -2.44508518E-17,
+        1.0,
+        9.363517E-07,
+        0.0,
+        0.6457,
+        3.85554028,
+        -1.50346613,
+        1.0
+      ],
+      "mesh": 10,
+      "name": "[8795815]52_BEDIENINGSPLAAT_MAT CHROOM"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "name": "Cell"
+    }
+  ]
+}

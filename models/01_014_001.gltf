@@ -1,0 +1,590 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 156,
+      "type": "SCALAR",
+      "max": [
+        25.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 26,
+      "type": "VEC3",
+      "max": [
+        -207.603287,
+        2.85,
+        -15.986701
+      ],
+      "min": [
+        -209.807312,
+        2.84,
+        -18.0057964
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 84,
+      "type": "SCALAR",
+      "max": [
+        15.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3",
+      "max": [
+        -207.578964,
+        3.275,
+        -15.9767008
+      ],
+      "min": [
+        -209.3593,
+        2.84,
+        -15.986701
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5121,
+      "count": 60,
+      "type": "SCALAR",
+      "max": [
+        11.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 12,
+      "type": "VEC3",
+      "max": [
+        -207.603287,
+        3.275,
+        -15.1939745
+      ],
+      "min": [
+        -208.007309,
+        3.265,
+        -15.9839745
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -209.480576,
+        2.84,
+        -17.1207962
+      ],
+      "min": [
+        -209.650574,
+        2.83,
+        -17.2907963
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5123,
+      "count": 2748,
+      "type": "SCALAR",
+      "max": [
+        495.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 496,
+      "type": "VEC3",
+      "max": [
+        -208.007309,
+        3.33,
+        -15.1867008
+      ],
+      "min": [
+        -209.807312,
+        2.88,
+        -15.986701
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5123,
+      "count": 14565,
+      "type": "SCALAR",
+      "max": [
+        3325.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5126,
+      "count": 3326,
+      "type": "VEC3",
+      "max": [
+        0.1514784,
+        0.191287011,
+        0.03491436
+      ],
+      "min": [
+        -0.151478246,
+        -0.03,
+        -0.03508564
+      ]
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5123,
+      "count": 47121,
+      "type": "SCALAR",
+      "max": [
+        8578.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 8579,
+      "type": "VEC3",
+      "max": [
+        0.2934312,
+        0.159363165,
+        0.215833217
+      ],
+      "min": [
+        -0.0225,
+        -0.01839868,
+        -0.278551131
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "01_014_001.bin",
+      "byteLength": 278764
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 156,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 156,
+      "byteLength": 312,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 468,
+      "byteLength": 84,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 552,
+      "byteLength": 192,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 744,
+      "byteLength": 60,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 804,
+      "byteLength": 144,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 948,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 984,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1080,
+      "byteLength": 5496,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 6576,
+      "byteLength": 5952,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 12528,
+      "byteLength": 29132,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 41660,
+      "byteLength": 39912,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 81572,
+      "byteLength": 94244,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 175816,
+      "byteLength": 102948,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "g3_keramisch_tegels_300x300mm",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "o1_glas_achterwand toilet en bad",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.627451,
+          0.627451,
+          0.627451,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "g3_keramisch_wit",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1.0,
+          1.0,
+          0.9411765,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h3_chroom",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.784313738,
+          0.784313738,
+          0.784313738,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 3
+          },
+          "indices": 2,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 5
+          },
+          "indices": 4,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 7
+          },
+          "indices": 6,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 9
+          },
+          "indices": 8,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 11
+          },
+          "indices": 10,
+          "material": 3
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 13
+          },
+          "indices": 12,
+          "material": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        210.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[8795570]43_Tegelvloer-300*300"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        210.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "[8795582]Glaswand"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        210.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 2,
+      "name": "[8795585]Glasplaat"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        210.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 3,
+      "name": "[8795592]43_Tegelvloer-300*300"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        210.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 4,
+      "name": "[8795791]74_Badopstelling 800x1800mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        1.09246576,
+        3.476755,
+        -0.18670091,
+        1.0
+      ],
+      "mesh": 5,
+      "name": "[8795792]A5550AA - CERATHERM 50 VANOVA BATERIE TERMOSTATICKA NASTENNA 2"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        9.288167E-15,
+        0.0,
+        9.288167E-15,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.8027,
+        3.46,
+        -0.205100909,
+        1.0
+      ],
+      "mesh": 6,
+      "name": "[8795793]B9506AA - IDEALRAIN S1 SPRCH.SADA 1F/80"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "name": "Cell"
+    }
+  ]
+}

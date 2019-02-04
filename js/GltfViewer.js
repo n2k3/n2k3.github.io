@@ -46,20 +46,57 @@ const loadingSpinner = document.querySelector("#loadingSpinner");
 // Model setup //
 /////////////////
 let modelPaths = [
-    "models/00_001_002.gltf",
-    "models/00_002_000.gltf",
-    "models/00_003_002.gltf",
+    "models/00_001_011.gltf",
+    "models/00_002_003.gltf",
+    "models/00_003_000.gltf",
+    "models/00_004_003.gltf",
+    "models/00_005_025.gltf",
+    "models/00_006_004.gltf",
+    "models/00_007_003.gltf",
+    "models/00_008_004.gltf",
+    "models/00_009_008.gltf",
+    "models/00_010_013.gltf",
+    "models/00_011_013.gltf",
+    "models/00_012_001.gltf",
+    "models/00_013_003.gltf",
+    "models/00_014_004.gltf",
+    "models/00_015_004.gltf",
+    "models/00_017_001.gltf",
+    "models/00_019_001.gltf",
+    "models/00_020_002.gltf",
     "models/00_standard.gltf", // this model and above are for first floor
-    // "models/01_001_001.gltf",
-    // "models/01_002_001.gltf",
+    // "models/01_001_006.gltf",
+    // "models/01_002_003.gltf",
+    // "models/01_003_010.gltf",
+    // "models/01_004_004.gltf",
+    // "models/01_005_001.gltf",
+    // "models/01_006_002.gltf",
+    // "models/01_007_002.gltf",
+    // "models/01_008_002.gltf",
+    // "models/01_009_002.gltf",
+    // "models/01_010_003.gltf",
+    // "models/01_011_001.gltf",
+    // "models/01_012_001.gltf",
+    // "models/01_014_001.gltf",
+    // "models/01_015_001.gltf",
+    // "models/01_016_001.gltf",
+    // "models/01_017_001.gltf",
     // "models/01_standard.gltf", // this model and above are for 2nd floor
-    // "models/02_001_000.gltf",
-    // "models/02_002_001.gltf",
+    // "models/02_001_028.gltf",
+    // "models/02_003_003.gltf",
+    // "models/02_004_001.gltf",
+    // "models/02_005_001.gltf",
     // "models/02_standard.gltf", // this model and above are for 3rd floor
-    // "models/03_001_001.gltf", // roof
+    // "models/03_001_007.gltf",
+    // "models/03_002_006.gltf",
+    // "models/03_003_000.gltf",
+    // "models/03_005_004.gltf",
+    // "models/03_006_000.gltf",
+    // "models/03_007_002.gltf",
+    // "models/03_009_003.gltf"
 ]
 let modelScale = 10.0;
-let modelRotationY = 0; // in radians
+let modelRotationY = Math.PI; // in radians
 let modelPositionOffset = new THREE.Vector3(0, 0, 0);
 
 var gltfLoader = new THREE.GLTFLoader();
@@ -285,7 +322,7 @@ function initThree() {
     // worldCamera is the dynamic camera 3d object that will be positioned, oriented and
     // constantly updated inside the 3d scene.  Its view will ultimately get passed back to the
     // stationary quadCamera, which renders the scene to a fullscreen quad (made up of 2 large triangles).
-    worldCamera = new THREE.PerspectiveCamera(72, 1, 1, 1000); // TODO try 72, window.innerWidth / window.innerHeight, 1, 1000);
+    worldCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
     pathTracingScene.add(worldCamera);
 
     controls = new FirstPersonCameraControls(worldCamera);
@@ -296,10 +333,11 @@ function initThree() {
     pathTracingScene.add(cameraControlsObject);
 
     // for flyCam
-    cameraControlsObject.position.set(30, 40, 50);
+    cameraControlsObject.position.set(-100, 120, 0);
 
     // look slightly downward
-    cameraControlsPitchObject.rotation.x = -0.2;
+    cameraControlsPitchObject.rotation.x = -0.95;
+    cameraControlsYawObject.rotation.y = Math.PI / -1.333;
 
     oldYawRotation = cameraControlsYawObject.rotation.y;
     oldPitchRotation = cameraControlsPitchObject.rotation.x;
@@ -513,7 +551,7 @@ async function prepareGeometryForPT(meshList, pathTracingMaterialList, triangleM
 
         //slot 7
         triangle_array[32 * i + 28] = pathTracingMaterialList[materialNumber].albedoTextureID; // r or x
-        triangle_array[32 * i + 29] = 0; // g or y
+        triangle_array[32 * i + 29] = pathTracingMaterialList[materialNumber].opacity; // g or y
         triangle_array[32 * i + 30] = 0; // b or z
         triangle_array[32 * i + 31] = 0; // a or w
 

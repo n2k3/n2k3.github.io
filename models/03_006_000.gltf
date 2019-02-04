@@ -2,11 +2,11 @@
   "accessors": [
     {
       "bufferView": 0,
-      "componentType": 5121,
-      "count": 84,
+      "componentType": 5123,
+      "count": 1971,
       "type": "SCALAR",
       "max": [
-        15.0
+        368.0
       ],
       "min": [
         0.0
@@ -15,26 +15,26 @@
     {
       "bufferView": 1,
       "componentType": 5126,
-      "count": 16,
+      "count": 369,
       "type": "VEC3",
       "max": [
-        5.665,
-        5.68,
-        -30.0
+        95.27,
+        5.958595,
+        5.83609
       ],
       "min": [
-        0.035,
-        5.46,
-        -39.0
+        90.44,
+        5.759,
+        5.48745346
       ]
     },
     {
       "bufferView": 2,
-      "componentType": 5121,
-      "count": 48,
+      "componentType": 5123,
+      "count": 4341,
       "type": "SCALAR",
       "max": [
-        9.0
+        852.0
       ],
       "min": [
         0.0
@@ -43,17 +43,17 @@
     {
       "bufferView": 3,
       "componentType": 5126,
-      "count": 10,
+      "count": 853,
       "type": "VEC3",
       "max": [
-        0.125,
-        9.398067,
-        -30.0
+        95.7,
+        5.85199976,
+        5.717
       ],
       "min": [
-        0.035,
-        5.695,
-        -39.0
+        90.00001,
+        5.76699972,
+        5.46054
       ]
     }
   ],
@@ -64,43 +64,55 @@
   },
   "buffers": [
     {
-      "uri": "02_standard.bin",
-      "byteLength": 444
+      "uri": "03_006_000.bin",
+      "byteLength": 27292
     }
   ],
   "bufferViews": [
     {
       "buffer": 0,
-      "byteLength": 84,
+      "byteLength": 3944,
       "target": 34963
     },
     {
       "buffer": 0,
-      "byteOffset": 84,
-      "byteLength": 192,
+      "byteOffset": 3944,
+      "byteLength": 4428,
       "target": 34962
     },
     {
       "buffer": 0,
-      "byteOffset": 276,
-      "byteLength": 48,
+      "byteOffset": 8372,
+      "byteLength": 8684,
       "target": 34963
     },
     {
       "buffer": 0,
-      "byteOffset": 324,
-      "byteLength": 120,
+      "byteOffset": 17056,
+      "byteLength": 10236,
       "target": 34962
     }
   ],
   "materials": [
     {
-      "name": "f2_beton",
+      "name": "h2_staal_verzinkt",
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.7490196,
-          0.698039234,
-          0.6784314,
+          0.470588237,
+          0.470588237,
+          0.470588237,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h7_zink",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.470588237,
+          0.470588237,
+          0.470588237,
           1.0
         ],
         "metallicFactor": 0.0
@@ -116,17 +128,13 @@
           },
           "indices": 0,
           "material": 0
-        }
-      ]
-    },
-    {
-      "primitives": [
+        },
         {
           "attributes": {
             "POSITION": 3
           },
           "indices": 2,
-          "material": 0
+          "material": 1
         }
       ]
     }
@@ -146,43 +154,20 @@
         0.0,
         1.0,
         0.0,
+        -90.0,
         0.0,
-        0.0,
-        30.0,
+        -15.0,
         1.0
       ],
       "mesh": 0,
-      "name": "[8687943]23_Van Wijnen betonvloer 220mm"
-    },
-    {
-      "matrix": [
-        1.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        1.0,
-        0.0,
-        0.0,
-        0.0,
-        30.0,
-        1.0
-      ],
-      "mesh": 1,
-      "name": "[8883360]21_prefab betonwand 90mm"
+      "name": "[8272738]52_Zinken bakgoot B44"
     }
   ],
   "scene": 0,
   "scenes": [
     {
       "nodes": [
-        0,
-        1
+        0
       ],
       "name": "Cell"
     }

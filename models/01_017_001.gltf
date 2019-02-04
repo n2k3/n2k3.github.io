@@ -1,0 +1,315 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 6,
+      "type": "SCALAR",
+      "max": [
+        3.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3",
+      "max": [
+        -253.9209,
+        2.3882,
+        -16.7028046
+      ],
+      "min": [
+        -254.8448,
+        2.3882,
+        -17.7752
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 30,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -253.9209,
+        2.3882,
+        -16.7028046
+      ],
+      "min": [
+        -254.8448,
+        2.368,
+        -17.7752
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5121,
+      "count": 276,
+      "type": "SCALAR",
+      "max": [
+        57.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 58,
+      "type": "VEC3",
+      "max": [
+        0.025,
+        4.0,
+        0.025
+      ],
+      "min": [
+        -0.025,
+        3.996,
+        -0.025
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5121,
+      "count": 576,
+      "type": "SCALAR",
+      "max": [
+        114.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 115,
+      "type": "VEC3",
+      "max": [
+        0.03,
+        4.0,
+        0.03
+      ],
+      "min": [
+        -0.03,
+        3.99,
+        -0.03
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "01_017_001.bin",
+      "byteLength": 3112
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 8,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 8,
+      "byteLength": 48,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 56,
+      "byteLength": 32,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 88,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 184,
+      "byteLength": 276,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 460,
+      "byteLength": 696,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1156,
+      "byteLength": 576,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1732,
+      "byteLength": 1380,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "n6_polyester ruw_rood",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.733333349,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "n6_polyester binnenafwerking_RAL 9010",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "Default Light Source",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1.0,
+          1.0,
+          0.0,
+          0.25
+        ],
+        "metallicFactor": 0.0
+      },
+      "alphaMode": "BLEND"
+    },
+    {
+      "name": "h4_aluminium",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.956862748,
+          0.956862748,
+          0.956862748,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        },
+        {
+          "attributes": {
+            "POSITION": 3
+          },
+          "indices": 2,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 5
+          },
+          "indices": 4,
+          "material": 2
+        },
+        {
+          "attributes": {
+            "POSITION": 7
+          },
+          "indices": 6,
+          "material": 3
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        255.0,
+        0.0,
+        15.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[8737092]Sandwichplafond toilet_20,2mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.6242,
+        -1.632,
+        -2.24780488,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "[8737097]Type 1"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1
+      ],
+      "name": "Cell"
+    }
+  ]
+}

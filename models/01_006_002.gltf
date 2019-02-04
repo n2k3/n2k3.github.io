@@ -1,0 +1,1218 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.244,
+        -39.17
+      ],
+      "min": [
+        -90.00001,
+        2.84,
+        -39.2699966
+      ]
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5121,
+      "count": 60,
+      "type": "SCALAR",
+      "max": [
+        11.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 12,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.244,
+        -39.2699966
+      ],
+      "min": [
+        -90.00001,
+        2.97999835,
+        -41.4581032
+      ]
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.335,
+        2.84,
+        -39.0
+      ],
+      "min": [
+        -89.965004,
+        2.62,
+        -41.3999977
+      ]
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.01695037,
+        -39.2699966
+      ],
+      "min": [
+        -90.00001,
+        2.84,
+        -41.458
+      ]
+    },
+    {
+      "bufferView": 8,
+      "componentType": 5121,
+      "count": 456,
+      "type": "SCALAR",
+      "max": [
+        103.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 9,
+      "componentType": 5126,
+      "count": 104,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.142,
+        -41.458
+      ],
+      "min": [
+        -90.00001,
+        3.119,
+        -41.670002
+      ]
+    },
+    {
+      "bufferView": 10,
+      "componentType": 5123,
+      "count": 37689,
+      "type": "SCALAR",
+      "max": [
+        12415.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 11,
+      "componentType": 5126,
+      "count": 12416,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.155,
+        -41.6260033
+      ],
+      "min": [
+        -90.00001,
+        3.095,
+        -41.69
+      ]
+    },
+    {
+      "bufferView": 12,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 13,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.14300013,
+        -41.452
+      ],
+      "min": [
+        -90.00001,
+        2.986,
+        -41.458
+      ]
+    },
+    {
+      "bufferView": 14,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 15,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.148,
+        -41.458
+      ],
+      "min": [
+        -90.00001,
+        3.137,
+        -41.670002
+      ]
+    },
+    {
+      "bufferView": 16,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 17,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        2.84,
+        -41.4139977
+      ],
+      "min": [
+        -90.00001,
+        2.77000022,
+        -41.458
+      ]
+    },
+    {
+      "bufferView": 18,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 19,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.119,
+        -41.4759979
+      ],
+      "min": [
+        -90.00001,
+        3.075,
+        -41.5459976
+      ]
+    },
+    {
+      "bufferView": 20,
+      "componentType": 5121,
+      "count": 6,
+      "type": "SCALAR",
+      "max": [
+        3.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 21,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.075,
+        -41.458
+      ],
+      "min": [
+        -90.00001,
+        2.77000022,
+        -41.458
+      ]
+    },
+    {
+      "bufferView": 22,
+      "componentType": 5121,
+      "count": 6,
+      "type": "SCALAR",
+      "max": [
+        3.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 23,
+      "componentType": 5126,
+      "count": 4,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.075,
+        -41.531
+      ],
+      "min": [
+        -90.00001,
+        2.77000022,
+        -41.531
+      ]
+    },
+    {
+      "bufferView": 24,
+      "componentType": 5121,
+      "count": 24,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 25,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.075,
+        -41.458
+      ],
+      "min": [
+        -90.00001,
+        2.77000022,
+        -41.531
+      ]
+    },
+    {
+      "bufferView": 26,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 27,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.11,
+        -41.458
+      ],
+      "min": [
+        -90.00001,
+        3.075,
+        -41.4759979
+      ]
+    },
+    {
+      "bufferView": 28,
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "max": [
+        7.0
+      ],
+      "min": [
+        0.0
+      ]
+    },
+    {
+      "bufferView": 29,
+      "componentType": 5126,
+      "count": 8,
+      "type": "VEC3",
+      "max": [
+        -84.2999954,
+        3.12,
+        -41.5700035
+      ],
+      "min": [
+        -90.00001,
+        2.84,
+        -41.670002
+      ]
+    }
+  ],
+  "asset": {
+    "copyright": "2019 (c) Smart2IT B.V.",
+    "generator": "Smart2IT Revit glTF Exporter v0.5",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "uri": "01_006_002.bin",
+      "byteLength": 227700
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 36,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 132,
+      "byteLength": 60,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 192,
+      "byteLength": 144,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 336,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 372,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 468,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 504,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 600,
+      "byteLength": 456,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1056,
+      "byteLength": 1248,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 2304,
+      "byteLength": 75380,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 77684,
+      "byteLength": 148992,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 226676,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 226712,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 226808,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 226844,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 226940,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 226976,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227072,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227108,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227204,
+      "byteLength": 8,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227212,
+      "byteLength": 48,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227260,
+      "byteLength": 8,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227268,
+      "byteLength": 48,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227316,
+      "byteLength": 24,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227340,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227436,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227472,
+      "byteLength": 96,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227568,
+      "byteLength": 36,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 227604,
+      "byteLength": 96,
+      "target": 34962
+    }
+  ],
+  "materials": [
+    {
+      "name": "f4_gasbeton_Ytong_blokken",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.956862748,
+          0.956862748,
+          0.956862748,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "s1_bitumen",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.254901975,
+          0.254901975,
+          0.254901975,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "f2_beton",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.7490196,
+          0.698039234,
+          0.6784314,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "m1_isolatie",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.768627465,
+          0.9882353,
+          0.619607866,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "i4_underlayment",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.458823532,
+          0.333333343,
+          0.219607845,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "h4_aluminium",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.956862748,
+          0.956862748,
+          0.956862748,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "i2_naaldhout (vuren)",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9019608,
+          0.8352941,
+          0.6745098,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "i4_multiplex",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.9019608,
+          0.8352941,
+          0.6745098,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "Walls material#7F7F7FFF",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.498039216,
+          0.498039216,
+          0.498039216,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "i4_multiplex_staande arcering",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.929411769,
+          0.882352948,
+          0.8666667,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "name": "g2_baksteen_Sonsbeek",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.521568656,
+          0.435294122,
+          0.372549027,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1
+          },
+          "indices": 0,
+          "material": 0
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 3
+          },
+          "indices": 2,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 5
+          },
+          "indices": 4,
+          "material": 2
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 7
+          },
+          "indices": 6,
+          "material": 3
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 9
+          },
+          "indices": 8,
+          "material": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 11
+          },
+          "indices": 10,
+          "material": 5
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 13
+          },
+          "indices": 12,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 15
+          },
+          "indices": 14,
+          "material": 1
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 17
+          },
+          "indices": 16,
+          "material": 6
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 19
+          },
+          "indices": 18,
+          "material": 6
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 21
+          },
+          "indices": 20,
+          "material": 7
+        },
+        {
+          "attributes": {
+            "POSITION": 23
+          },
+          "indices": 22,
+          "material": 3
+        },
+        {
+          "attributes": {
+            "POSITION": 25
+          },
+          "indices": 24,
+          "material": 8
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 27
+          },
+          "indices": 26,
+          "material": 9
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 29
+          },
+          "indices": 28,
+          "material": 10
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 0,
+      "name": "[6718296]21_Cellenbeton_100mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 1,
+      "name": "[6718299]47_Dakbedekking"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 2,
+      "name": "[6718303]23_Van Wijnen betonvloer 220mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 3,
+      "name": "[6718315]Roofs 9"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 4,
+      "name": "[6718330]27_Underlayment"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 5,
+      "name": "[6718335]Roofs 7"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 6,
+      "name": "[6718336]AL_47_Dakbedekking"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 7,
+      "name": "[6718347]47_Dakbedekking"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 8,
+      "name": "[6718357]Regelwerk 44x70mm"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 9,
+      "name": "[6718367]Regelwerk 44x70 tpv afdekker"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 10,
+      "name": "[6718387]21_HSB rekje dakopstand uitbouw"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 11,
+      "name": "[6718397]Beplating uitbouw"
+    },
+    {
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        90.0,
+        0.0,
+        30.0,
+        1.0
+      ],
+      "mesh": 12,
+      "name": "[6718421]21_Metselwerk Sonsbeek 100mm, Aberson 48N13"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "name": "Cell"
+    }
+  ]
+}
