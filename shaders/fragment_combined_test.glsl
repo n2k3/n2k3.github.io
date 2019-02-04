@@ -600,7 +600,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 
 		float t = SceneIntersect(r, intersec, false); // HACK remove false (checkOcean)
 
-/*
+
 		// ray hits sky first
 		if (t == INFINITY && bounces == 0 ) // HACK remove bounces
 		{
@@ -609,7 +609,6 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			accumCol = initialSkyColor; // HACK remove
 			break;	
 		}
-		*/
 
 		// if ray bounced off of water and hits sky
 		if ( t == INFINITY && previousIntersecType == REFR )
