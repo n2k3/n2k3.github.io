@@ -4,13 +4,7 @@ precision highp float;
 precision highp int;
 precision highp sampler2D;
 
-uniform float uCameraUnderWater;
 uniform vec3 uSunDirection;
-
-uniform mat4 uShortBoxInvMatrix;
-uniform mat3 uShortBoxNormalMatrix;
-uniform mat4 uTallBoxInvMatrix;
-uniform mat3 uTallBoxNormalMatrix;
 
 #include <pathtracing_uniforms_and_defines>
 #include <pathtracing_calc_fresnel_reflectance>
@@ -23,10 +17,7 @@ uniform sampler2D tTriangleTexture;
 uniform sampler2D tAABBTexture;
 uniform sampler2D tAlbedoTextures[8]; // 8 = max number of diffuse albedo textures per model
 
-//float InvTextureWidth = 0.000244140625; // (1 / 4096 texture width)
-//float InvTextureWidth = 0.00048828125;  // (1 / 2048 texture width)
-//float InvTextureWidth = 0.0009765625;   // (1 / 1024 texture width)
-
+// (1 / 2048 texture width)
 #define INV_TEXTURE_WIDTH 0.00048828125
 
 #define N_QUADS 1
@@ -35,9 +26,7 @@ uniform sampler2D tAlbedoTextures[8]; // 8 = max number of diffuse albedo textur
 
 struct Ray { vec3 origin; vec3 direction; };
 struct Quad { vec3 v0; vec3 v1; vec3 v2; vec3 v3; vec3 emission; vec3 color; int type; };
-struct Sphere { float radius; vec3 position; vec3 emission; vec3 color; int type; };
-struct Box { vec3 minCorner; vec3 maxCorner; vec3 emission; vec3 color; int type; };
-struct Intersection { vec3 normal; vec3 emission; vec3 color; vec2 uv; int type; int albedoTextureID; float opacity;}; // HACK remove albedoTextureID
+struct Intersection { vec3 normal; vec3 emission; vec3 color; vec2 uv; int type; int albedoTextureID; float opacity;};
 
 Quad quads[N_QUADS];
 
@@ -45,7 +34,6 @@ Quad quads[N_QUADS];
 #include <pathtracing_sphere_intersect>
 #include <pathtracing_plane_intersect>
 #include <pathtracing_triangle_intersect>
-#include <pathtracing_box_intersect>
 #include <pathtracing_physical_sky_functions>
 #include <pathtracing_boundingbox_intersect>
 #include <pathtracing_bvhTriangle_intersect>
@@ -59,130 +47,22 @@ float QuadIntersect( vec3 v0, vec3 v1, vec3 v2, vec3 v3, Ray r )
 	return min(tTri1, tTri2);
 }
 
-//---------------------------------------------------------------------------------------------------------
-float DisplacementBoxIntersect( vec3 minCorner, vec3 maxCorner, Ray r )
-//---------------------------------------------------------------------------------------------------------
-{
-	vec3 invDir = 1.0 / r.direction;
-	vec3 tmin = (minCorner - r.origin) * invDir;
-	vec3 tmax = (maxCorner - r.origin) * invDir;
-	
-	vec3 real_min = min(tmin, tmax);
-	vec3 real_max = max(tmin, tmax);
-	
-	float minmax = min( min(real_max.x, real_max.y), real_max.z);
-	float maxmin = max( max(real_min.x, real_min.y), real_min.z);
-	
-	// early out
-	if (minmax < maxmin) return INFINITY;
-	
-	if (maxmin > 0.0) // if we are outside the box
-	{
-		return maxmin;	
-	}
-		
-	if (minmax > 0.0) // else if we are inside the box
-	{
-		return minmax;
-	}
-				
-	return INFINITY;
-}
-
-
-// SEA
-/* Credit: some of the following ocean code is borrowed from https://www.shadertoy.com/view/Ms2SD1 posted by user 'TDM' */
-
-#define SEA_HEIGHT     1.0 // this is how many units from the top of the ocean bounding box
-#define SEA_FREQ       1.5 // wave density: lower = spread out, higher = close together
-#define SEA_CHOPPY     2.0 // smaller beachfront-type waves, they travel in parallel
-#define SEA_SPEED      0.15 // how quickly time passes
-#define OCTAVE_M   mat2(1.6, 1.2, -1.2, 1.6);
-
-float hash( vec2 p )
-{
-	float h = dot(p,vec2(127.1,311.7));	
-    	return fract(sin(h)*43758.5453123);
-}
-
-float noise( in vec2 p )
-{
-	vec2 i = floor( p );
-	vec2 f = fract( p );	
-	vec2 u = f*f*(3.0-2.0*f);
-	return -1.0+2.0*mix( mix( hash( i + vec2(0.0,0.0) ), 
-		     hash( i + vec2(1.0,0.0) ), u.x),
-		mix( hash( i + vec2(0.0,1.0) ), 
-		     hash( i + vec2(1.0,1.0) ), u.x), u.y);
-}
-
-float sea_octave( vec2 uv, float choppy )
-{
-	uv += noise(uv);        
-	vec2 wv = 1.0 - abs(sin(uv));
-	vec2 swv = abs(cos(uv));    
-	wv = mix(wv, swv, wv);
-	return pow(1.0 - pow(wv.x * wv.y, 0.65), choppy);
-}
-
-float getOceanWaterHeight( vec3 p )
-{
-	p.x *= 0.001;
-	p.z *= 0.001;
-	float freq = SEA_FREQ;
-	float amp = SEA_HEIGHT;
-	float choppy = SEA_CHOPPY;
-	float sea_time = uTime * SEA_SPEED;
-	
-	vec2 uv = p.xz; uv.x *= 0.75;
-	float d, h = 0.0;
-
-	d =  sea_octave((uv + sea_time) * freq, choppy);
-	d += sea_octave((uv - sea_time) * freq, choppy);
-	h += d * amp;        
-	
-	return 50.0 * h - 10.0;
-}
-
-float getOceanWaterHeight_Detail( vec3 p )
-{
-	p.x *= 0.001;
-	p.z *= 0.001;
-	float freq = SEA_FREQ;
-	float amp = SEA_HEIGHT;
-	float choppy = SEA_CHOPPY;
-	float sea_time = uTime * SEA_SPEED;
-	
-	vec2 uv = p.xz; uv.x *= 0.75;
-	float d, h = 0.0;    
-	for(int i = 0; i < 4; i++)
-	{        
-		d =  sea_octave((uv + sea_time) * freq, choppy);
-		d += sea_octave((uv - sea_time) * freq, choppy);
-		h += d * amp;        
-		uv *= OCTAVE_M; freq *= 1.9; amp *= 0.22;
-		choppy = mix(choppy, 1.0, 0.2);
-	}
-	return 50.0 * h - 10.0;
-}
-
-
 // CLOUDS
 /* Credit: some of the following cloud code is borrowed from https://www.shadertoy.com/view/XtBXDw posted by user 'valentingalea' */
 
 #define THICKNESS      25.0
-#define ABSORPTION     0.45
+#define ABSORPTION     0.333
 #define N_MARCH_STEPS  12
 #define N_LIGHT_STEPS  3
 
 float noise3D( in vec3 p )
 {
-	return texture2D(t_PerlinNoise, p.xz).x;
+	return texture(t_PerlinNoise, p.xz).x;
 }
 
 const mat3 m = 1.21 * mat3( 0.00,  0.80,  0.60,
-                    -0.80,  0.36, -0.48,
-		    -0.60, -0.48,  0.64 );
+                           -0.80,  0.36, -0.48,
+                           -0.60, -0.48,  0.64 );
 
 float fbm( vec3 p )
 {
@@ -206,8 +86,8 @@ float cloud_density( vec3 pos, float cov )
 float cloud_light( vec3 pos, vec3 dir_step, float cov )
 {
 	float T = 1.0; // transmitance
-    	float dens;
-    	float T_i;
+    float dens;
+    float T_i;
 	
 	for (int i = 0; i < N_LIGHT_STEPS; i++) 
 	{
@@ -230,7 +110,7 @@ vec4 render_clouds( Ray eye, vec3 p, vec3 sunDirection )
 	float covAmount = (sin(mod(uTime * 0.1, TWO_PI))) * 0.5 + 0.5;
 	float coverage = mix(1.0, 1.5, clamp(covAmount, 0.0, 1.0));
 	float T = 1.0; // transmitance
-	vec3 C = vec3(0); // color
+	vec3 C = vec3(0.25); // color
 	float alpha = 0.0;
 	float dens;
 	float T_i;
@@ -277,8 +157,8 @@ float checkCloudCover( vec3 sunDirection, vec3 p )
 
 struct StackLevelData
 {
-        float id;
-        float rayT;
+    float id;
+    float rayT;
 } stackLevels[24];
 
 struct BoxNode
@@ -302,22 +182,22 @@ BoxNode GetBoxNode(const in float i)
 	vec4 aabbNodeData0 = texture( tAABBTexture, uv0 );
 	vec4 aabbNodeData1 = texture( tAABBTexture, uv1 );
 
-	BoxNode BN = BoxNode( aabbNodeData0.x,
-			      aabbNodeData0.yzw,
-			      aabbNodeData1.x,
-			      aabbNodeData1.yzw );
+    BoxNode BN = BoxNode( aabbNodeData0.x,
+                          aabbNodeData0.yzw,
+                          aabbNodeData1.x,
+                          aabbNodeData1.yzw );
 
-        return BN;
+    return BN;
 }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // HACK disable checkOcean
+float SceneIntersect( Ray r, inout Intersection intersec )
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 {
 	Ray rObj;
 	vec3 hitObjectSpace;
 	vec3 hitWorldSpace;
-	vec3 normal; //vec3 n;
+	vec3 normal;
 	float dw, dc;
 	float d = INFINITY;
 	float t = INFINITY;
@@ -347,19 +227,19 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 	BoxNode currentBoxNode, nodeA, nodeB, tnp;
 	StackLevelData currentStackData, slDataA, slDataB, tmp;
 	
-	// SEA FLOOR
+	// UNDERGROUND
 	d = PlaneIntersect(vec4(0, 1, 0, -1000.0), r);
 	if (d < t)
 	{
 		t = d;
 		intersec.normal = vec3(0,1,0);
 		intersec.emission = vec3(0);
-		intersec.color = vec3(0.0, 0.07, 0.07);
+		intersec.color = vec3(0.333, 0.333, 0.333);
 		intersec.type = SEAFLOOR;
 	}
 
 	for (int i = 0; i < N_QUADS; i++)
-        {
+    {
 		d = QuadIntersect( quads[i].v0, quads[i].v1, quads[i].v2, quads[i].v3, r );
 		if (d < t && d > 0.0)
 		{
@@ -371,61 +251,6 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 		}
     }
 	
-    // skip rendering the rest
-//    return t; // HACK disable this
-	
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-	// OCEAN 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	if ( !checkOcean )
-	{
-		return t;
-	}
-
-	vec3 pos = r.origin;
-	vec3 dir = r.direction;
-	float h = 0.0;
-	d = 0.0; // reset d
-
-	for(int i = 0; i < 100; i++)
-	{
-		h = abs(pos.y - getOceanWaterHeight(pos));
-		if (d > 4000.0 || h < 1.0) break;
-		d += h;
-		pos += dir * h;
-	}
-	hitWorldSpace = pos;
-
-	if (d > 4000.0)
-	{
-		d = PlaneIntersect( vec4(0, 1, 0, 0.0), r );
-		if ( d >= INFINITY ) return t;
-		hitWorldSpace = r.origin + r.direction * d;
-
-		waterWaveHeight = getOceanWaterHeight_Detail(hitWorldSpace);
-		d = DisplacementBoxIntersect( vec3(-INFINITY, -INFINITY, -INFINITY), vec3(INFINITY, waterWaveHeight, INFINITY), r);
-		hitWorldSpace = r.origin + r.direction * d;
-	}
-
-	if (d < t)
-	{
-		float eps = 1.0;
-		t = d;
-		float dx = getOceanWaterHeight_Detail(hitWorldSpace - vec3(eps,0,0)) - getOceanWaterHeight_Detail(hitWorldSpace + vec3(eps,0,0));
-		float dy = eps * 2.0; // (the water wave height is a function of x and z, not dependent on y)
-		float dz = getOceanWaterHeight_Detail(hitWorldSpace - vec3(0,0,eps)) - getOceanWaterHeight_Detail(hitWorldSpace + vec3(0,0,eps));
-
-		intersec.normal = normalize(vec3(dx,dy,dz));
-		intersec.emission = vec3(0);
-		intersec.color = vec3(0.6, 1.0, 1.0);
-		intersec.type = REFR;
-	}
-	*/
-	
-//	return t; // HACK disable  this
-	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	// glTF
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -434,18 +259,16 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 	currentStackData = StackLevelData(stackptr, BoundingBoxIntersect(currentBoxNode.minCorner, currentBoxNode.maxCorner, r.origin, inverseDir));
 	stackLevels[0] = currentStackData;
 
-	while (true)
+	while(true)
+    {
+		if (currentStackData.rayT < t)
         {
-
-		if (currentStackData.rayT < t + 65.0) // 65.0 is the magic number for this scene
-                {
-
-                        if (currentBoxNode.branch_A_Index >= 0.0) // signifies this is a branch
-                        {
-                                nodeA = GetBoxNode(currentBoxNode.branch_A_Index);
-                                nodeB = GetBoxNode(currentBoxNode.branch_B_Index);
-                                slDataA = StackLevelData(currentBoxNode.branch_A_Index, BoundingBoxIntersect(nodeA.minCorner, nodeA.maxCorner, r.origin, inverseDir));
-                                slDataB = StackLevelData(currentBoxNode.branch_B_Index, BoundingBoxIntersect(nodeB.minCorner, nodeB.maxCorner, r.origin, inverseDir));
+            if (currentBoxNode.branch_A_Index >= 0.0) // signifies this is a branch
+            {
+                nodeA = GetBoxNode(currentBoxNode.branch_A_Index);
+                nodeB = GetBoxNode(currentBoxNode.branch_B_Index);
+                slDataA = StackLevelData(currentBoxNode.branch_A_Index, BoundingBoxIntersect(nodeA.minCorner, nodeA.maxCorner, r.origin, inverseDir));
+                slDataB = StackLevelData(currentBoxNode.branch_B_Index, BoundingBoxIntersect(nodeB.minCorner, nodeB.maxCorner, r.origin, inverseDir));
 
 				// first sort the branch node data so that 'a' is the smallest
 				if (slDataB.rayT < slDataA.rayT)
@@ -459,26 +282,26 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 					nodeA = tnp;
 				} // branch 'b' now has the larger rayT value of 'a' and 'b'
 
-				if (slDataB.rayT < INFINITY) // see if branch 'b' (the larger rayT) needs to be processed
+				if (slDataB.rayT < t) // see if branch 'b' (the larger rayT) needs to be processed
 				{
 					currentStackData = slDataB;
 					currentBoxNode = nodeB;
 					skip = true; // this will prevent the stackptr from decreasing by 1
 				}
-				if (slDataA.rayT < INFINITY) // see if branch 'a' (the smaller rayT) needs to be processed
+
+				if (slDataA.rayT < t) // see if branch 'a' (the smaller rayT) needs to be processed
 				{
 					if (skip == true) // if larger branch 'b' needed to be processed also,
 						stackLevels[int(stackptr++)] = slDataB; // cue larger branch 'b' for future round
-								// also, increase pointer by 1
+								                                // also, increase pointer by 1
 
 					currentStackData = slDataA;
 					currentBoxNode = nodeA;
 					skip = true; // this will prevent the stackptr from decreasing by 1
 				}
-                        }
-
-                        else //if (currentBoxNode.branch_A_Index < 0.0) //  < 0.0 signifies a leaf node
-                        {
+            }
+            else //if (currentBoxNode.branch_A_Index < 0.0) //  < 0.0 signifies a leaf node
+            {
 				// each triangle's data is encoded in 8 rgba(or xyzw) texture slots
 				id = 8.0 * (-currentBoxNode.branch_A_Index - 1.0);
 				uv0 = vec2( (mod(id + 0.0, 2048.0)), floor((id + 0.0) * INV_TEXTURE_WIDTH) ) * INV_TEXTURE_WIDTH;
@@ -499,21 +322,20 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 					triangleV = tv;
 					triangleLookupNeeded = true;
 				}
-                        }
+            }
 		} // end if (currentStackData.rayT < t)
 
 		if (skip == false)
-                {
-                        // decrease pointer by 1 (0.0 is root level, 24.0 is maximum depth)
-                        if (--stackptr < 0.0) // went past the root level, terminate loop
-                                break;
-                        currentStackData = stackLevels[int(stackptr)];
-                        currentBoxNode = GetBoxNode(currentStackData.id);
-                }
+        {
+            // decrease pointer by 1 (0.0 is root level, 24.0 is maximum depth)
+            if (--stackptr < 0.0) // went past the root level, terminate loop
+                break;
+            currentStackData = stackLevels[int(stackptr)];
+            currentBoxNode = GetBoxNode(currentStackData.id);
+        }
 		skip = false; // reset skip
 
-        } // end while (true)
-
+    } // end while (true)
 
 	if (triangleLookupNeeded)
 	{
@@ -554,134 +376,130 @@ float SceneIntersect( Ray r, inout Intersection intersec, bool checkOcean ) // H
 } // end float SceneIntersect( Ray r, inout Intersection intersec )
 
 
+/* TODO use this without GPU 'crashing' issue, my screen goes blank and chrome crashes
+vec3 calcDirectLightingSun( vec3 mask, vec3 x, vec3 nl, vec3 sunDirection, Ray r, vec3 randVec )
+ {
+ 	vec3 dirLight = vec3(0);
+ 	Intersection shadowIntersec;
+
+ 	// cast shadow ray from intersection point
+ 	Ray shadowRay = Ray( x, normalize( sunDirection + (randVec * 0.01) ) );
+ 	shadowRay.origin += nl * 2.0;
+
+ 	float st = SceneIntersect(shadowRay, shadowIntersec);
+
+ 	if ( st == INFINITY )
+ 	{
+ 		vec3 sunEmission = Get_Sky_Color(shadowRay, sunDirection);
+        dirLight = mask * sunEmission * max(0.01, dot(shadowRay.direction, nl));
+ 	}
+
+ 	return dirLight;
+}
+*/
+
+
 
 //-----------------------------------------------------------------------
-vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK disable sunDirection
+vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed )
 //-----------------------------------------------------------------------
 {
 	vec3 randVec = vec3(rand(seed) * 2.0 - 1.0, rand(seed) * 2.0 - 1.0, rand(seed) * 2.0 - 1.0);
 	Ray cameraRay = r;
 	vec3 initialSkyColor = Get_Sky_Color(r, sunDirection);
 	
-	Ray skyRay = Ray( r.origin * vec3(0.02), normalize(vec3(r.direction.x, abs(r.direction.y), r.direction.z)) );
+	Ray skyRay = Ray( r.origin * 0.02, normalize(vec3(r.direction.x, abs(r.direction.y), r.direction.z)) );
 	float dc = SphereIntersect( 20000.0, vec3(skyRay.origin.x, -19900.0, skyRay.origin.z) + vec3(rand(seed) * 2.0), skyRay );
 	vec3 skyPos = skyRay.origin + skyRay.direction * dc;
 	vec4 cld = render_clouds(skyRay, skyPos, sunDirection);
-	
+
+	/*
 	Ray cloudShadowRay = Ray(r.origin * vec3(0.02), normalize(sunDirection + (randVec * 0.05)));
 	float dcs = SphereIntersect( 20000.0, vec3(skyRay.origin.x, -19900.0, skyRay.origin.z) + vec3(rand(seed) * 2.0), cloudShadowRay );
 	vec3 cloudShadowPos = cloudShadowRay.origin + cloudShadowRay.direction * dcs;
 	float cloudShadowFactor = checkCloudCover(cloudShadowRay.direction, cloudShadowPos);
+	*/
 	
 	Intersection intersec;
 	vec3 accumCol = vec3(0.0);
     vec3 mask = vec3(1.0);
 	vec3 n, nl, x;
 	vec3 firstX = vec3(0);
-	vec3 checkCol0 = vec3(1);
-	vec3 checkCol1 = vec3(0.5);
     vec3 tdir;
 
+	float hitDistance;
 	float nc, nt, Re;
 	float weight;
 	float t = INFINITY;
 	
 	int previousIntersecType = -1;
 	int diffuseCount = 0;
-	bool checkOcean = false;
 	bool skyHit = false;
     float epsIntersect = 0.01;
 
 	bool bounceIsSpecular = true;
 
-
     for (int bounces = 0; bounces < 6; bounces++)
 	{
 
-		float t = SceneIntersect(r, intersec, false); // HACK remove false (checkOcean)
-
+		float t = SceneIntersect(r, intersec);
 
 		// ray hits sky first
-		if (t == INFINITY && bounces == 0 ) // HACK remove bounces
+		if (t == INFINITY && bounces == 0 )
 		{
-			skyHit = true; // HACK remove
-			firstX = skyPos; // HACK remove
-			accumCol = initialSkyColor; // HACK remove
+			skyHit = true;
+			firstX = skyPos;
+			accumCol = initialSkyColor;
+
 			break;	
 		}
 
-		// if ray bounced off of water and hits sky
+        // TODO figure out how to properly render clouds in reflection and transmitting through glass then hitting the sky and sun bloom
+		// if ray bounced off of refractive material and hits sky
 		if ( t == INFINITY && previousIntersecType == REFR )
 		{
 			if (bounceIsSpecular) // prevents sun 'fireflies' on diffuse surfaces
-//				accumCol = mask * Get_Sky_Color(r, sunDirection);
-				accumCol = mask * Get_Sky_Color(r, sunDirection) * 1.0 / SUN_INTENSITY;
+				//accumCol = mask * Get_Sky_Color(r, sunDirection) * 0.0225; // TODO how to determine weight to calculate consversation of light energy based on original intesnity? 0.0225 is 2x the arbitrary number from the DIFF check)
+				accumCol = mask * Get_Sky_Color(r, sunDirection) / 2.0; // used with skyHit = true, if false enable the line above.
 
-			//if (uCameraUnderWater > 0.0) // uncomment 'if' for clouds reflection in water, but it's a
-//				skyHit = true;       // straight mirror-reflection, which is not physically possible
-			 
-			
+            skyHit = true; // TODO enables clouds through glass
+                           // but makes diffuse surfaces hit by indirect sunlight 'feel transparent'
+                           // and renders clouds on diffuse surfaces for rays that went through glass
+                           // and makes the diffuse surface light up more when looking angle increases...
 			firstX = skyPos;
 			
-			break;	
+			break;
 		}
-		
-		/*
-		// if ray bounced off of mirror box and hits sky
-		if (t == INFINITY && previousIntersecType == SPEC)
-		{
-			if (bounceIsSpecular) // prevents sun 'fireflies' on diffuse surfaces
-				accumCol = mask * Get_Sky_Color(r, sunDirection);
-			
-			if (bounces == 1) // reflection of sky in tall mirror box
-			{
-				initialSkyColor = Get_Sky_Color(Ray(r.origin, vec3(r.direction.x, abs(r.direction.y), r.direction.z)), sunDirection);
-				skyRay = Ray(r.origin * 0.01, normalize(vec3(r.direction.x, abs(r.direction.y), r.direction.z)) );
-				dc = PlaneIntersect( vec4(0, -1, 0, -150.0 + (rand(seed) * 2.0)), skyRay );
-				skyPos = skyRay.origin + skyRay.direction * dc;
-				
-				skyHit = true;
-				firstX = skyPos;
-			}
-			
-			break;	
-		}
-		*/
-		
-		// if ray bounced off of diffuse material (short box or walls/floor) and hits sky
+
+		// if ray bounced off of diffuse material and hits sky
 		if (t == INFINITY && previousIntersecType == DIFF)
 		{	
 			weight = 2.0;
 			// prevents sun 'fireflies' on diffuse surfaces
 			if (bounceIsSpecular || dot(r.direction, sunDirection) > 0.98)
-				weight = 0.03;
-			 
+				weight = 0.01125; // TODO how to determine weight to calculate natural brightness based on SUN_INTENSITY? 0.01125 seems arbitrary...
+
 			accumCol = mask * Get_Sky_Color(r, sunDirection) * weight;
-					
+
 			break;
 		}
 
-/*
-		// HACK might not need this (gltf Loading)
-		// if we reached something bright, don't spawn any more rays
+        /* TODO enable when supporting multiple lights in the scene other than the sun
+		// if we reached light material, don't spawn any more rays
 		if (intersec.type == LIGHT)
 		{
-			//if (bounceIsSpecular)
-			{
-				accumCol = mask * intersec.emission;
-			}
+            accumCol = mask * intersec.emission;
 
 			break;
 		}
 		*/
-
 
 		// useful data
 		vec3 n = intersec.normal;
         vec3 nl = dot(n,r.direction) <= 0.0 ? normalize(n) : normalize(n * -1.0);
 		vec3 x = r.origin + r.direction * t;
 
-		if (bounces == 0) 
+		if (bounces == 0)
 			firstX = x;
 
 		if (intersec.type == SEAFLOOR)
@@ -689,44 +507,35 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 			float waterDotSun = max(0.0, dot(vec3(0,1,0), sunDirection));
 			float waterDotCamera = max(0.4, dot(vec3(0,1,0), -cameraRay.direction));
 			accumCol = mask * intersec.color * waterDotSun * waterDotCamera;
-                        break;
+
+            break;
 		}
 		
-        if (intersec.type == DIFF || intersec.type == CHECK) // Ideal DIFFUSE reflection
+        if (intersec.type == DIFF) // Ideal DIFFUSE reflection
         {
-			diffuseCount++; // HACK remove this
-
-			previousIntersecType = DIFF; // HACK remove this
-
-			checkOcean = false; // HACK remove this
-			
-			// HACK might not need this (glTF viewer)
-			if( intersec.type == CHECK )
-			{
-				float q = clamp( mod( dot( floor(x.xz * 0.04), vec2(1.0) ), 2.0 ) , 0.0, 1.0 );
-				intersec.color = checkCol0 * q + checkCol1 * (1.0 - q);
-			}
+			diffuseCount++;
+			previousIntersecType = DIFF;
 
 			mask *= intersec.color;
-//			bounceIsSpecular = false; // HACK enable this, disable below
+            //accumCol += calcDirectLightingSun(mask, x, nl, sunDirection, r, randVec) * 0.02 * cloudShadowFactor;
 
-			/* HACK enable this
 			// Russian Roulette
 			float p = max(mask.r, max(mask.g, mask.b));
 			if (bounces > 0)
 			{
 				if (rand(seed) < p)
-                                	mask *= 1.0 / p;
-                        	else
-                                	break;
+                    mask *= 1.0 / p;
+                else
+                    break;
 			}
-			*/
 
-            if (diffuseCount == 1 && rand(seed) < 0.5) // HACK disable this
+            // TODO figure out how to properly combine indirect sky light and sun light
+            if (diffuseCount == 1 && rand(seed) < 0.5)
             {
 				// choose random Diffuse sample vector
 				r = Ray( x, randomCosWeightedDirectionInHemisphere(nl, seed) );
 				r.origin += r.direction * epsIntersect;
+
 				bounceIsSpecular = false;
 				continue;
             }
@@ -736,185 +545,62 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed ) // HACK dis
 				r.origin += nl;
 				weight = max(0.0, dot(r.direction, nl));
 				mask *= clamp(weight, 0.0, 1.0);
-				
+
 				bounceIsSpecular = true;
 				continue;
             }
         }
-/*
-        if (intersec.type == SPEC)  // Ideal SPECULAR reflection
-        {
-			//checkOcean = true;
-			mask *= intersec.color; // HACK disable this, disable below
-			r = Ray( x, reflect(r.direction, nl) );
-			r.origin += r.direction * epsIntersect;
-			mask *= intersec.color;
-			//bounceIsSpecular = true; // HACK enable this
-			previousIntersecType = SPEC;
-			
-			continue;
-        }
-        */
 
         if (intersec.type == REFR)  // Ideal dielectric REFRACTION
 		{
 			previousIntersecType = REFR;
-			checkOcean = false;
-			
+
 			nc = 1.0; // IOR of Air
 			nt = 1.5; // IOR of common Glass
 			Re = calcFresnelReflectance(n, nl, r.direction, nc, nt, tdir);
 
 			if (diffuseCount < 2)
-				bounceIsSpecular = true; // HACK enable this
+				bounceIsSpecular = true;
 
+            // TODO enable clouds in reflection
 			if (rand(seed) < Re) // reflect ray from surface
 			{
 				r = Ray( x, reflect(r.direction, nl) );
 				r.origin += r.direction * epsIntersect;
-			    	continue;
+                continue;
 			}
 			else // transmit ray through surface
 			{
+                // TODO enable clouds when transmitting through surface
 				mask *= intersec.color * (1.0 - intersec.opacity);
-				r = Ray(x, tdir);
+				r = Ray(x, r.direction); // TODO using r.direction instead of tdir, because going through common Glass makes everything spherical from up close...
 				r.origin += r.direction * epsIntersect;
 				continue;
 			}
 
 		} // end if (intersec.type == REFR)
 
-/*
-		// HACK disable wood
-		if (intersec.type == WOOD)  // Diffuse object underneath with thin layer of Water on top
-		{
-			checkOcean = false;
-
-			float roughness = 0.2;
-
-			nc = 1.0; // IOR of air
-			nt = 1.1; // IOR of ClearCoat
-			Re = calcFresnelReflectance(n, nl, r.direction, nc, nt, tdir);
-
-			// choose either specular reflection or diffuse
-			if ( rand(seed) < Re )
-			{
-				vec3 reflectVec = reflect(r.direction, nl);
-				r = Ray( x, mix( reflectVec, normalize(nl + randVec), roughness) );
-				r.origin += r.direction;
-				previousIntersecType = REFR;
-
-				bounceIsSpecular = (diffuseCount < 2);
-
-				continue;
-			}
-			else
-			{
-				previousIntersecType = DIFF;
-
-				float pattern = abs(noise(vec2( (x.x * 0.5 * x.z * 0.5 + sin(x.y*0.005)) )));
-				float woodPattern = 1.0 / max(1.0, pattern * 100.0);
-				intersec.color *= vec3(woodPattern);
-
-				mask *= intersec.color;
-
-				if (rand(seed) < 0.5)
-				{
-					// choose random Diffuse sample vector
-					r = Ray( x, randomCosWeightedDirectionInHemisphere(nl, seed) );
-					r.origin += r.direction;
-
-					bounceIsSpecular = false;
-					continue;
-				}
-				else
-				{
-					r = Ray( x, normalize(sunDirection + (randVec * 0.01)) );
-					r.origin += nl;
-					weight = max(0.0, dot(r.direction, nl));
-					mask *= clamp(weight, 0.0, 1.0);
-
-					bounceIsSpecular = true;
-					continue;
-				}
-			}
-
-		} //end if (intersec.type == WOOD)
-		
-		if (intersec.type == COAT)  // Diffuse object underneath with ClearCoat on top (like car, or shiny pool ball)
-		{
-			nc = 1.0; // IOR of Air
-			nt = 1.4; // IOR of ClearCoat
-			Re = calcFresnelReflectance(n, nl, r.direction, nc, nt, tdir);
-
-			// choose either specular reflection or diffuse
-			if( rand(seed) < Re )
-			{
-				r = Ray( x, reflect(r.direction, nl) );
-				r.origin += r.direction * epsIntersect;
-				bounceIsSpecular = true;
-				continue;
-			}
-			else
-			{
-				mask *= intersec.color;
-
-				int id = intersec.albedoTextureID;
-				if (id > -1)
-				{
-					vec3 albedoSample;
-					     if (id == 0) albedoSample = texture(tAlbedoTextures[0], intersec.uv).rgb;
-					else if (id == 1) albedoSample = texture(tAlbedoTextures[1], intersec.uv).rgb;
-					else if (id == 2) albedoSample = texture(tAlbedoTextures[2], intersec.uv).rgb;
-					else if (id == 3) albedoSample = texture(tAlbedoTextures[3], intersec.uv).rgb;
-					else if (id == 4) albedoSample = texture(tAlbedoTextures[4], intersec.uv).rgb;
-					else if (id == 5) albedoSample = texture(tAlbedoTextures[5], intersec.uv).rgb;
-					else if (id == 6) albedoSample = texture(tAlbedoTextures[6], intersec.uv).rgb;
-					else if (id == 7) albedoSample = texture(tAlbedoTextures[7], intersec.uv).rgb;
-
-					mask *= albedoSample;
-				}
-
-				r = Ray( x, randomCosWeightedDirectionInHemisphere(nl, seed) );
-				r.origin += r.direction * epsIntersect;
-				bounceIsSpecular = false;
-				continue;
-			}
-
-		} //end if (intersec.type == COAT)
-		*/
-
-
 	} // end for (int bounces = 0; bounces < 5; bounces++)
 
-	// atmospheric haze effect (aerial perspective)
-	float hitDistance;
-	
 	if ( skyHit ) // sky and clouds
 	{
 		vec3 cloudColor = cld.rgb / (cld.a + 0.00001);
-		vec3 sunColor = clamp(Get_Sky_Color( Ray(skyPos, normalize((randVec * 0.03) + sunDirection)), sunDirection ), 0.0, 1.0);
+	    vec3 sunColor = clamp(Get_Sky_Color( Ray(skyPos, normalize((randVec * 0.03) + sunDirection)), sunDirection ), 0.0, 1.0);
 		
 		cloudColor *= mix(sunColor, vec3(1), max(0.0, dot(vec3(0,1,0), sunDirection)) );
 		cloudColor = mix(initialSkyColor, cloudColor, clamp(cld.a, 0.0, 1.0));
-		
+
 		hitDistance = distance(skyRay.origin, skyPos);
-		accumCol = mask * mix( accumCol, cloudColor, clamp( exp2( -hitDistance * 0.004 ), 0.0, 1.0 ) );
+		accumCol = mask * mix( accumCol, cloudColor, clamp( exp2( -hitDistance * 0.003 ), 0.0, 1.0 ) );
 	}	
 	else // terrain and other objects
 	{
+	    // atmospheric haze effect (aerial perspective)
 		hitDistance = distance(cameraRay.origin, firstX);
-		accumCol = mix( initialSkyColor, accumCol, clamp( exp2( -log(hitDistance * 0.00003) ), 0.0, 1.0 ) );
-
-		// underwater fog effect
-		//hitDistance = distance(cameraRay.origin, firstX);
-		//hitDistance *= 0.0;
-		//accumCol = mix( vec3(0.0,0.05,0.05), accumCol, clamp( exp2( -hitDistance * 0.001 ), 0.0, 1.0 ) );
+		accumCol = mix( initialSkyColor, accumCol, clamp( exp2( -log(hitDistance * 0.001) ), 0.0, 1.0 ) ); // TODO add logarithmic haze value (0.001) to menu
 	}
 
-	return vec3(max(vec3(0), accumCol));   // HACK disable this, enable accumCol below
-
-	//return accumCol;
+	return vec3(max(vec3(0), accumCol));
 }
 
 
@@ -926,46 +612,22 @@ void SetupScene(void)
 	quads[0] = Quad( vec3( x/-2.0, 0, x/2.0), vec3(x/2.0, 0, x/2.0), vec3(x/2.0, 0, x/-2.0), vec3(x/-2.0, 0, x/-2.0),    vec3(0), vec3(0.45), DIFF);// Floor
 }
 
-
-//#include <pathtracing_main> // HACK enable this, disable below
-
-// tentFilter from Peter Shirley's 'Realistic Ray Tracing (2nd Edition)' book, pg. 60		
+// tentFilter from Peter Shirley's 'Realistic Ray Tracing (2nd Edition)' book, pg. 60
 float tentFilter(float x)
 {
-	if (x < 0.5) 
+	if (x < 0.5)
 		return sqrt(2.0 * x) - 1.0;
-	else return 1.0 - sqrt(2.0 - (2.0 * x));
+
+	return 1.0 - sqrt(2.0 - (2.0 * x));
 }
 
-// cubicSplineFilter from Peter Shirley's 'Realistic Ray Tracing (2nd Edition)' book, pg. 58
-float solve(float r)
-{
-	float u = r;
-	for (int i = 0; i < 5; i++)
-	{
-		u = (11.0 * r + u * u * (6.0 + u * (8.0 - 9.0 * u))) /
-			(4.0 + 12.0 * u * (1.0 + u * (1.0 - u)));
-	}
-	return u;
-}
-
-float cubicFilter(float x)
-{
-	if (x < 1.0 / 24.0)
-		return pow(24.0 * x, 0.25) - 2.0;
-	else if (x < 0.5)
-		return solve(24.0 * (x - 1.0 / 24.0) / 11.0) - 1.0;
-	else if (x < 23.0 / 24.0)
-		return 1.0 - solve(24.0 * (23.0 / 24.0 - x) / 11.0);
-	else return 2.0 - pow(24.0 * (1.0 - x), 0.25);
-}
 void main( void )
 {
 	// not needed, three.js has a built-in uniform named cameraPosition
 	//vec3 camPos   = vec3( uCameraMatrix[3][0],  uCameraMatrix[3][1],  uCameraMatrix[3][2]);
 	
-    	vec3 camRight   = vec3( uCameraMatrix[0][0],  uCameraMatrix[0][1],  uCameraMatrix[0][2]);
-    	vec3 camUp      = vec3( uCameraMatrix[1][0],  uCameraMatrix[1][1],  uCameraMatrix[1][2]);
+    vec3 camRight   = vec3( uCameraMatrix[0][0],  uCameraMatrix[0][1],  uCameraMatrix[0][2]);
+    vec3 camUp      = vec3( uCameraMatrix[1][0],  uCameraMatrix[1][1],  uCameraMatrix[1][2]);
 	vec3 camForward = vec3(-uCameraMatrix[2][0], -uCameraMatrix[2][1], -uCameraMatrix[2][2]);
 	
 	// seed for rand(seed) function
@@ -1005,9 +667,9 @@ void main( void )
 	SetupScene(); 
 
 	// perform path tracing and get resulting pixel color
-	vec3 pixelColor = CalculateRadiance( ray, uSunDirection, seed ); // HACK disable uSunDirection
-	
-	vec3 previousColor = texture2D(tPreviousTexture, vUv).rgb; // HACK use texture
+	vec3 pixelColor = CalculateRadiance( ray, uSunDirection, seed );
+
+	vec3 previousColor = texture(tPreviousTexture, vUv).rgb;
 	
 	if ( uCameraJustStartedMoving )
 	{
@@ -1015,8 +677,8 @@ void main( void )
 	}
 	else if ( uCameraIsMoving )
 	{
-		previousColor *= 0.5; // motion-blur trail amount (old image) // UPDATE use 0.78 for better performance, use in different state?     else if ( uCameraIsMoving || rayHitIsDynamic )
-		pixelColor *= 0.5; // brightness of new image (noisy) // UPDATE use 0.22 for better performance, use in different state?     else if ( uCameraIsMoving || rayHitIsDynamic )
+		previousColor *= 0.5; // motion-blur trail amount (old image)
+		pixelColor *= 0.5; // brightness of new image (noisy)
 	}
 	
 	

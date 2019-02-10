@@ -1,16 +1,16 @@
 var screenTextureShader = {
 
         uniforms: THREE.UniformsUtils.merge( [
-		
+
                 {
-                        tTexture0: { type: "t", value: null }
+                        tPathTracedImageTexture: { type: "t", value: null }
                 }
-		
+
         ] ),
 
         vertexShader: [
                 '#version 300 es',
-                
+
                 'precision highp float;',
 		'precision highp int;',
 
@@ -21,25 +21,25 @@ var screenTextureShader = {
 			'vUv = uv;',
 			'gl_Position = vec4( position, 1.0 );',
 		'}'
-		
+
         ].join( '\n' ),
 
         fragmentShader: [
                 '#version 300 es',
-                
+
                 'precision highp float;',
 		'precision highp int;',
 		'precision highp sampler2D;',
 
-                'uniform sampler2D tTexture0;',
+                'uniform sampler2D tPathTracedImageTexture;',
                 'in vec2 vUv;',
                 'out vec4 out_FragColor;',
-		
+
 		'void main()',
-		'{',	
-			'out_FragColor = texture(tTexture0, vUv);',	
+		'{',
+			'out_FragColor = texture(tPathTracedImageTexture, vUv);',
 		'}'
-		
+
         ].join( '\n' )
 
 };
@@ -47,17 +47,17 @@ var screenTextureShader = {
 var screenOutputShader = {
 
         uniforms: THREE.UniformsUtils.merge( [
-		
+
                 {
                         uOneOverSampleCounter: { type: "f", value: 0.0 },
-			tTexture0: { type: "t", value: null }
+			tPathTracedImageTexture: { type: "t", value: null }
                 }
-		
+
         ] ),
 
         vertexShader: [
                 '#version 300 es',
-                
+
                 'precision highp float;',
 		'precision highp int;',
 
@@ -73,23 +73,23 @@ var screenOutputShader = {
 
         fragmentShader: [
                 '#version 300 es',
-                
+
                 'precision highp float;',
 		'precision highp int;',
 		'precision highp sampler2D;',
 
                 'uniform float uOneOverSampleCounter;',
-		'uniform sampler2D tTexture0;',
+		'uniform sampler2D tPathTracedImageTexture;',
 		'in vec2 vUv;',
                 'out vec4 out_FragColor;',
-		
+
 		'void main()',
 		'{',
-			'vec4 pixelColor = texture(tTexture0, vUv) * uOneOverSampleCounter;',
+			'vec4 pixelColor = texture(tPathTracedImageTexture, vUv) * uOneOverSampleCounter;',
 
-			'out_FragColor = sqrt(pixelColor);',	
+			'out_FragColor = pow(pixelColor, vec4(0.4545));',
 		'}'
-		
+
         ].join( '\n' )
 
 };
@@ -141,13 +141,14 @@ out vec4 out_FragColor;
 #define SPECSUB 7
 #define CHECK 8
 #define WATER 9
-#define WOOD 10
-#define SEAFLOOR 11
-#define TERRAIN 12
-#define CLOTH 13
-#define LIGHTWOOD 14
-#define DARKWOOD 15
-#define PAINTING 16
+#define PBR_MATERIAL 10
+#define WOOD 11
+#define SEAFLOOR 12
+#define TERRAIN 13
+#define CLOTH 14
+#define LIGHTWOOD 15
+#define DARKWOOD 16
+#define PAINTING 17
 
 `;
 
@@ -178,7 +179,7 @@ THREE.ShaderChunk[ 'pathtracing_skymodel_defines' ] = `
 #define MIE_ZENITH_LENGTH 1250.0
 #define UP_VECTOR vec3(0.0, 1.0, 0.0)
 
-#define SUN_INTENSITY 15.0 //800.0 if Uncharted2ToneMap is used
+#define SUN_INTENSITY 20.0 //800.0 if Uncharted2ToneMap is used
 #define SUN_ANGULAR_DIAMETER_COS 0.99983194915 // 66 arc seconds -> degrees, and the cosine of that
 #define CUTOFF_ANGLE 1.66 // original value (PI / 1.9) 
 
@@ -1001,15 +1002,10 @@ float BoundingBoxIntersect( vec3 minCorner, vec3 maxCorner, vec3 rayOrigin, vec3
 	
 	float t0 = max( max(tmin.x, tmin.y), tmin.z);
 	float t1 = min( min(tmax.x, tmax.y), tmax.z);
-
-	if (t0 > t1) return INFINITY;
 	
-	float result = INFINITY;
+	if (t0 > t1 || t1 < 0.0) return INFINITY;
 	
-	if (t1 > 0.0) result = t1;
-	if (t0 > 0.0) result = t0;
-	
-	return result;
+	return t0;
 }
 
 `;
@@ -1059,7 +1055,7 @@ float BVH_TriangleIntersect( vec3 v0, vec3 v1, vec3 v2, Ray r, out float u, out 
 
 	// comment out the following line if double-sided triangles are wanted, or
 	// uncomment the following line if back-face culling is desired (single-sided triangles)
-	//if (det < 0.0) return INFINITY;
+	if (det < 0.0) return INFINITY;
 
 	vec3 tvec = r.origin - v0;
 	u = dot(tvec, pvec) * det;

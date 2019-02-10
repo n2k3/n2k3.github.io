@@ -657,9 +657,7 @@ async function prepareGeometryForPT(meshList, pathTracingMaterialList, triangleM
         uCameraIsMoving: {type: "b1", value: false},
         uCameraJustStartedMoving: {type: "b1", value: false},
 
-        uCameraUnderWater: {type: "f", value: 0.0},
         uTime: {type: "f", value: 0.0},
-        uSampleCounter: {type: "f", value: 1.0}, // HACK try value 0.0, TODO remove this, not used
         uFrameCounter: {type: "f", value: 1.0},
         uULen: {type: "f", value: 1.0},
         uVLen: {type: "f", value: 1.0},
@@ -668,7 +666,6 @@ async function prepareGeometryForPT(meshList, pathTracingMaterialList, triangleM
 
         uResolution: {type: "v2", value: new THREE.Vector2()},
 
-        uRandomVector: {type: "v3", value: new THREE.Vector3()}, // TODO remove this, not used
         uSunDirection: {type: "v3", value: new THREE.Vector3()},
         uCameraMatrix: {type: "m4", value: new THREE.Matrix4()},
 
@@ -688,7 +685,7 @@ async function prepareGeometryForPT(meshList, pathTracingMaterialList, triangleM
         depthTest: false
     });
 
-    screenTextureMaterial.uniforms.tTexture0.value = pathTracingRenderTarget.texture;
+    screenTextureMaterial.uniforms.tPathTracedImageTexture.value = pathTracingRenderTarget.texture;
 
     let screenTextureMesh = new THREE.Mesh(screenTextureGeometry, screenTextureMaterial);
     screenTextureScene.add(screenTextureMesh);
@@ -704,7 +701,7 @@ async function prepareGeometryForPT(meshList, pathTracingMaterialList, triangleM
         depthTest: false
     });
 
-    screenOutputMaterial.uniforms.tTexture0.value = pathTracingRenderTarget.texture;
+    screenOutputMaterial.uniforms.tPathTracedImageTexture.value = pathTracingRenderTarget.texture;
 
     let screenOutputMesh = new THREE.Mesh(screenOutputGeometry, screenOutputMaterial);
     screenOutputScene.add(screenOutputMesh);
@@ -1093,25 +1090,16 @@ function animate() {
 
     }
 
-    /*
-    if (cameraControlsObject.position.y < 0.0)
-        cameraUnderWater = 1.0;
-    else cameraUnderWater = 0.0;
-    */
-
     //sunAngle = (elapsedTime * 0.03) % Math.PI;
     // sunAngle = Math.PI / 2.5;
     let sunDirection = new THREE.Vector3(Math.cos(sunAngle) * 1.2, Math.sin(sunAngle), -Math.cos(sunAngle) * 3.0);
     sunDirection.normalize();
 
-    //pathTracingUniforms.uCameraUnderWater.value = cameraUnderWater;
     pathTracingUniforms.uSunDirection.value.copy(sunDirection);
     //pathTracingUniforms.uTime.value = elapsedTime;
     pathTracingUniforms.uCameraIsMoving.value = cameraIsMoving;
     pathTracingUniforms.uCameraJustStartedMoving.value = cameraJustStartedMoving;
-    pathTracingUniforms.uSampleCounter.value = sampleCounter;
     pathTracingUniforms.uFrameCounter.value = frameCounter;
-    // pathTracingUniforms.uRandomVector.value = new THREE.Vector3(Math.random(), Math.random(), Math.random());
     // CAMERA
     cameraControlsObject.updateMatrixWorld(true);
     pathTracingUniforms.uCameraMatrix.value.copy(worldCamera.matrixWorld);
