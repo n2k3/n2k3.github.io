@@ -1,45 +1,41 @@
 var screenTextureShader = {
 
         uniforms: THREE.UniformsUtils.merge( [
-
+		
                 {
                         tPathTracedImageTexture: { type: "t", value: null }
                 }
-
+		
         ] ),
 
         vertexShader: [
                 '#version 300 es',
-
+                
                 'precision highp float;',
 		'precision highp int;',
 
-		'out vec2 vUv;',
-
 		'void main()',
 		'{',
-			'vUv = uv;',
 			'gl_Position = vec4( position, 1.0 );',
 		'}'
-
+		
         ].join( '\n' ),
 
         fragmentShader: [
                 '#version 300 es',
-
+                
                 'precision highp float;',
 		'precision highp int;',
 		'precision highp sampler2D;',
 
                 'uniform sampler2D tPathTracedImageTexture;',
-                'in vec2 vUv;',
                 'out vec4 out_FragColor;',
-
+		
 		'void main()',
-		'{',
-			'out_FragColor = texture(tPathTracedImageTexture, vUv);',
+		'{',	
+			'out_FragColor = texelFetch(tPathTracedImageTexture, ivec2(gl_FragCoord.xy), 0);',	
 		'}'
-
+		
         ].join( '\n' )
 
 };
@@ -47,25 +43,22 @@ var screenTextureShader = {
 var screenOutputShader = {
 
         uniforms: THREE.UniformsUtils.merge( [
-
+		
                 {
                         uOneOverSampleCounter: { type: "f", value: 0.0 },
 			tPathTracedImageTexture: { type: "t", value: null }
                 }
-
+		
         ] ),
 
         vertexShader: [
                 '#version 300 es',
-
+                
                 'precision highp float;',
 		'precision highp int;',
 
-		'out vec2 vUv;',
-
 		'void main()',
 		'{',
-			'vUv = uv;',
 			'gl_Position = vec4( position, 1.0 );',
 		'}'
 
@@ -73,23 +66,21 @@ var screenOutputShader = {
 
         fragmentShader: [
                 '#version 300 es',
-
+                
                 'precision highp float;',
 		'precision highp int;',
 		'precision highp sampler2D;',
 
                 'uniform float uOneOverSampleCounter;',
 		'uniform sampler2D tPathTracedImageTexture;',
-		'in vec2 vUv;',
                 'out vec4 out_FragColor;',
-
+		
 		'void main()',
 		'{',
-			'vec4 pixelColor = texture(tPathTracedImageTexture, vUv) * uOneOverSampleCounter;',
-
-			'out_FragColor = pow(pixelColor, vec4(0.4545));',
+			'vec3 pixelColor = texelFetch(tPathTracedImageTexture, ivec2(gl_FragCoord.xy), 0).rgb * uOneOverSampleCounter;',
+			'out_FragColor = vec4( pow(pixelColor, vec3(0.4545)), 1.0 );',	
 		'}'
-
+		
         ].join( '\n' )
 
 };
@@ -130,6 +121,7 @@ out vec4 out_FragColor;
 #define E                2.71828182845904524
 #define INFINITY         1000000.0
 
+#define SPOT_LIGHT -2
 #define POINT_LIGHT -1
 #define LIGHT 0
 #define DIFF 1
@@ -1005,7 +997,7 @@ float BoundingBoxIntersect( vec3 minCorner, vec3 maxCorner, vec3 rayOrigin, vec3
 	
 	if (t0 > t1 || t1 < 0.0) return INFINITY;
 	
-	return t0;
+	return t0;	
 }
 
 `;
@@ -1053,8 +1045,8 @@ float BVH_TriangleIntersect( vec3 v0, vec3 v1, vec3 v2, Ray r, out float u, out 
 	vec3 pvec = cross(r.direction, edge2);
 	float det = 1.0 / dot(edge1, pvec);
 
-	// comment out the following line if double-sided triangles are wanted, or
-	// uncomment the following line if back-face culling is desired (single-sided triangles)
+	// comment out the following line if double-sided triangles are wanted, or ...
+	// uncomment the following line if back-face culling is desired (front-facing triangles only)
 	if (det < 0.0) return INFINITY;
 
 	vec3 tvec = r.origin - v0;
@@ -1379,8 +1371,8 @@ void main( void )
 	// pixelOffset ranges from -1.0 to +1.0, so only need to divide by half resolution
 	pixelOffset /= (uResolution * 0.5);
 
-	// vUv comes in the range 0.0 to 1.0, so we must map it to the range -1.0 to +1.0
-	pixelPos = vUv * 2.0 - 1.0;
+	// we must map pixelPos into the range -1.0 to +1.0
+	pixelPos = (gl_FragCoord.xy / uResolution) * 2.0 - 1.0;
 	pixelPos += pixelOffset;
 
 	vec3 rayDir = normalize( pixelPos.x * camRight * uULen + pixelPos.y * camUp * uVLen + camForward );
@@ -1400,7 +1392,7 @@ void main( void )
 	// perform path tracing and get resulting pixel color
 	vec3 pixelColor = CalculateRadiance( ray, seed );
 	
-	vec3 previousColor = texture(tPreviousTexture, vUv).rgb;
+	vec3 previousColor = texelFetch(tPreviousTexture, ivec2(gl_FragCoord.xy), 0).rgb;
 	
 	if ( uCameraJustStartedMoving )
 	{
