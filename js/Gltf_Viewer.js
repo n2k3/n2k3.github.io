@@ -70,36 +70,7 @@ let modelPaths = [
     "models/00_017_001.gltf",
     "models/00_019_001.gltf",
     "models/00_020_002.gltf",
-    "models/00_standard.gltf", // this model and above are for first floor
-    // "models/01_001_006.gltf",
-    // "models/01_002_003.gltf",
-    // "models/01_003_010.gltf",
-    // "models/01_004_004.gltf",
-    // "models/01_005_001.gltf",
-    // "models/01_006_002.gltf",
-    // "models/01_007_002.gltf",
-    // "models/01_008_002.gltf",
-    // "models/01_009_002.gltf",
-    // "models/01_010_003.gltf",
-    // "models/01_011_001.gltf",
-    // "models/01_012_001.gltf",
-    // "models/01_014_001.gltf",
-    // "models/01_015_001.gltf",
-    // "models/01_016_001.gltf",
-    // "models/01_017_001.gltf",
-    // "models/01_standard.gltf", // this model and above are for 2nd floor
-    // "models/02_001_028.gltf",
-    // "models/02_003_003.gltf",
-    // "models/02_004_001.gltf",
-    // "models/02_005_001.gltf",
-    // "models/02_standard.gltf", // this model and above are for 3rd floor
-    // "models/03_001_007.gltf",
-    // "models/03_002_006.gltf",
-    // "models/03_003_000.gltf",
-    // "models/03_005_004.gltf",
-    // "models/03_006_000.gltf",
-    // "models/03_007_002.gltf",
-    // "models/03_009_003.gltf"
+    "models/00_standard.gltf"
 ]
 let modelScale = 10.0;
 let modelRotationY = Math.PI; // in radians

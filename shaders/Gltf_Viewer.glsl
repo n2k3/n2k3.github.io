@@ -242,11 +242,7 @@ vec3 Get_HDR_Color(Ray r)
 	vec4 texData = texture( tHDRTexture, sampleUV );
 	texData = RGBEToLinear(texData);
 	
-	// tone mapping options
-	//vec3 texColor = LinearToneMapping(texData.rgb);
-	//vec3 texColor = ReinhardToneMapping(texData.rgb);
-	//vec3 texColor = Uncharted2ToneMapping(texData.rgb);
-	//vec3 texColor = OptimizedCineonToneMapping(texData.rgb);
+	// tone mapping
 	vec3 texColor = ACESFilmicToneMapping(texData.rgb);
 
 	return texColor;
@@ -286,7 +282,7 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed )
 		// ray hits sky first
 		if (t == INFINITY && bounces == 0 )
 		{
-			accumCol = mask * Get_HDR_Color(r);
+			accumCol = Get_HDR_Color(r);
 
 			break;	
 		}
@@ -303,15 +299,17 @@ vec3 CalculateRadiance( Ray r, vec3 sunDirection, inout uvec2 seed )
 		}
 
         	// if ray bounced off of glass and hits sky
-		if (t == INFINITY && (previousIntersecType == REFR || previousIntersecType == SPEC))
+		if (t == INFINITY && previousIntersecType == REFR)
 		{
-			if (sampleSunLight) // sun going through glass, hitting a another surface
-			    mask *= uSunColor * uSunLightIntensity;
-            else // looking through glass, hitting the sky
-                mask *= Get_HDR_Color(r) * uSkyLightIntensity;
+            		if (diffuseCount == 0) // camera looking through glass, hitting the sky
+			    	mask *= Get_HDR_Color(r);
+			else if (sampleSunLight) // sun rays going through glass, hitting another surface
+				mask *= uSunColor * uSunLightIntensity;
+			else  // sky rays going through glass, hitting another surface
+                		mask *= Get_HDR_Color(r) * uSkyLightIntensity;
 
 			if (bounceIsSpecular) // prevents sun 'fireflies' on diffuse surfaces
-                accumCol = mask;
+                		accumCol = mask;
 
 			break;
 		}
